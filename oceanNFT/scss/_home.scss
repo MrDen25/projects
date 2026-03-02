@@ -1,0 +1,1131 @@
+// Міксіни
+@use '_mixins.scss' as *;
+// Типографія
+@use '_typo.scss' as *;
+@use 'colors' as *;
+
+//______HERO_____//
+.page {
+  &__hero {
+    @include adaptiveValue('margin-top', 194, 106, 0, 1400, 400);
+  }
+}
+.hero {
+  &__container {
+    display: grid;
+    grid-template-columns: 848fr 495fr;
+    @include adaptiveValue('column-gap', 54, 20);
+    @include adaptiveValue('row-gap', 124.7, 20);
+    justify-content: space-between;
+    grid-template-areas:
+      'content gallery'
+      'partners partners';
+    @media (width<toEm(1024)) {
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'content'
+        'partners'
+        'gallery';
+    }
+  }
+
+  &__content {
+    grid-area: content;
+  }
+
+  &__stats {
+  }
+
+  &__gallery {
+    grid-area: gallery;
+  }
+}
+.content-hero {
+  &__title {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 600;
+    @include adaptiveValue('font-size', 66, 36, 0, 1400, 600);
+    line-height: 1.37;
+    color: $white;
+    @include adaptiveValue('margin-bottom', 21, 20);
+    @media (width<toEm(600)) {
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    span {
+      background: linear-gradient(90deg, rgba(255, 86, 246, 1) 0%, rgba(67, 165, 227, 1) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+  }
+
+  &__text {
+    font-weight: 400;
+    @include adaptiveValue('font-size', 26, 14);
+    line-height: 1.67;
+    max-width: toRem(657.75);
+    @include adaptiveValue('margin-bottom', 43, 12, 0, 1400, 600);
+  }
+
+  &__explore {
+  }
+}
+.explore-content-hero {
+  display: flex;
+  align-items: center;
+  @include adaptiveValue('gap', 37, 15);
+  @include adaptiveValue('margin-bottom', 68.54, 40, 0, 1920, 768);
+
+  &__button {
+    @include adaptiveValue('min-width', 249.83, 136.31, 0, 1400, 600);
+    @include adaptiveValue('height', 68.12, 37.21, 0, 1400, 600);
+    clip-path: polygon(100% 0%, 100% 75.25%, 85% 100%, 0% 100%, 0% 29.75%, 18.75% 0%);
+    padding: 5px 5px 5px 5px;
+    &::after {
+      @media (width > toEm(768)) {
+        content: url('../img/hero/arrow-right.png');
+        background: none;
+      }
+    }
+    .btn-bid__text {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 19, 12, 0, 1920, 400);
+    }
+
+    .btn-bid__bg {
+      clip-path: polygon(100% 0%, 100% 75.25%, 85% 100%, 0% 100%, 0% 29.75%, 18.75% 0%);
+      background: linear-gradient(
+        90deg,
+        rgba(255, 86, 246, 1) 18%,
+        rgba(185, 54, 238, 1) 43%,
+        rgba(59, 172, 226, 1) 85%,
+        rgba(64, 106, 255, 1) 100%
+      );
+    }
+
+    &.btn-bid__gradient-bg {
+    }
+  }
+
+  &__text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 19, 12);
+    background: linear-gradient(86deg, #42a6e3 0%, #ff56f6 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.stats-hero {
+  display: flex;
+  @include adaptiveValue('gap', 55, 27);
+  align-items: center;
+  @media (width<toEm(768)) {
+    margin-bottom: 9px;
+  }
+
+  @media (width<toEm(768)) {
+    justify-content: space-between;
+  }
+
+  &__item {
+    &:nth-child(2) {
+      position: relative;
+      @media (width>toEm(768)) {
+        &::before {
+          content: '';
+          margin-right: -21.48px;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+
+          // Розміри лінії з макета
+          width: toRem(1);
+          height: toRem(63); // Підбери висоту за макетом
+
+          // Колір лінії (білий з прозорістю)
+          background-color: rgba(255, 255, 255, 0.26);
+        }
+        &::after {
+          content: '';
+          margin-left: -21.48px;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+
+          // Розміри лінії з макета
+          width: toRem(1);
+          height: toRem(63); // Підбери висоту за макетом
+
+          // Колір лінії (білий з прозорістю)
+          background-color: rgba(255, 255, 255, 0.26);
+        }
+      }
+    }
+  }
+
+  &__value {
+    font-family: 'Aldrich', sans-serif;
+    font-weight: 400;
+    @include adaptiveValue('font-size', 39, 19);
+    line-height: 1.33;
+    letter-spacing: 0.01em;
+  }
+
+  &__label {
+    font-weight: 300;
+    @include adaptiveValue('font-size', 17, 12);
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+  }
+}
+
+.gallery-hero {
+  &__wrapper {
+    position: relative;
+    top: 2%;
+  }
+  &__image {
+    position: relative;
+    @media (width<toEm(400)) {
+      width: 330px;
+      height: 447px;
+      object-fit: contain;
+    }
+  }
+
+  &__card {
+  }
+}
+.gallery-hero__card {
+  position: absolute;
+  top: 76%;
+  right: 0;
+  max-width: 336px;
+  clip-path: polygon(100% 0%, 100% 75.25%, 100% 100%, 0% 100%, 0% 29.75%, 13.75% 0%);
+  backdrop-filter: blur(15px);
+  border-radius: 5px;
+  // border: 1px solid $white-opacity;
+  @media (width<toEm(1024)) {
+    left: 0;
+    top: 81%;
+  }
+
+  .card {
+    &__content {
+      padding: 28.95px 20.64px 26.32px 19.16px;
+      border: none;
+      clip-path: polygon(100% 0%, 100% 75.25%, 100% 100%, 0% 100%, 0% 29.75%, 13.75% 0%);
+    }
+    &__wrapper {
+    }
+
+    &__info {
+    }
+
+    &__auction {
+    }
+  }
+  .info-card {
+    &__title {
+      font-size: 17px;
+      @include adaptiveValue('margin-bottom', 11, 20, 0, 1920, 768);
+    }
+
+    &__author {
+      @include adaptiveValue('margin-bottom', 25, 20, 0, 1920, 768);
+    }
+
+    &__avatar {
+      width: 28.74px;
+      height: 28.84px;
+    }
+
+    &__nickname {
+      font-size: 15px;
+    }
+
+    &__check {
+    }
+
+    &__price {
+    }
+
+    &__label {
+      font-size: 11px;
+      margin-bottom: 0px;
+    }
+
+    &__eth {
+      @include adaptiveValue('margin-bottom', 5, 5, 0, 1920, 768);
+      img {
+        width: 10.93px;
+        height: 17.8px;
+      }
+    }
+
+    &__value {
+      font-size: 9px;
+    }
+
+    &__fiat {
+      font-size: 11px;
+    }
+  }
+
+  .auction-card {
+    &__title {
+      font-size: 11px;
+      margin-bottom: 0px;
+    }
+
+    &__timer {
+      margin-bottom: 0px;
+    }
+
+    &__button {
+    }
+  }
+  .timer {
+    &__item {
+    }
+
+    &__num {
+      font-size: 17px;
+    }
+
+    &__text {
+      font-size: 11px;
+    }
+  }
+  .btn-bid {
+    height: 38px;
+    min-width: 120px;
+    &__text {
+      font-size: 17px;
+    }
+
+    &__bg {
+    }
+
+    &__gradient-bg {
+    }
+  }
+}
+
+////////////
+.hero {
+  &__partners {
+    grid-area: partners;
+  }
+}
+.partners-hero {
+  grid-column: 1/3;
+
+  &__items {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    @include adaptiveValue('column-gap', 133.76, 55.92);
+    @include adaptiveValue('row-gap', 50, 32.38);
+    justify-content: space-between;
+    @media (width<toEm(768)) {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  &__item {
+    flex-shrink: 1;
+  }
+
+  &__image {
+  }
+}
+
+//_________TOP-NFTS___________//
+.page {
+  &__topNfts {
+    @include adaptiveValue('margin-top', 216.52, 202, 0, 1920, 768);
+  }
+}
+.topNfts {
+  &__container {
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  &__title,
+  &__view {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 26, 16, 0, 1920, 768);
+  }
+
+  &__view {
+    display: flex;
+    align-items: center;
+    gap: 37px;
+    &::after {
+      content: '';
+      background: url('../img/topNfts/arrow-right-view-text.svg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 47px;
+      height: 27px;
+    }
+    @media (width<toEm(768)) {
+      display: none;
+    }
+  }
+
+  &__items {
+    scroll-snap-type: x mandatory;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-columns: repeat(auto-fit, minmax(min(toRem(438), 100%), 1fr));
+    // overflow-x: auto;
+    // grid-auto-flow: column;
+    // grid-auto-columns: 438px;
+    // grid-template-columns: 438px;
+    gap: 35.37px;
+    @include adaptiveValue('gap', 35.37, 24.56, 0, 1920, 600);
+    @media (width < toEm(1100)) {
+      overflow-x: auto;
+      grid-auto-flow: column;
+      grid-auto-columns: 326px;
+      grid-template-columns: 326px;
+    }
+    @media (width < toEm(768)) {
+      overflow-x: auto;
+      grid-auto-flow: column;
+      grid-auto-columns: 300px;
+      grid-template-columns: 300px;
+    }
+  }
+
+  &__card {
+    .card {
+      &__image-link {
+      }
+
+      &__content {
+      }
+
+      &__info {
+      }
+
+      &__auction {
+      }
+    }
+    .info-card {
+      &__title {
+      }
+
+      &__author {
+      }
+
+      &__avatar {
+      }
+
+      &__nickname {
+      }
+
+      &__check {
+      }
+
+      &__price {
+      }
+
+      &__label {
+      }
+
+      &__eth {
+      }
+
+      &__value {
+      }
+
+      &__fiat {
+      }
+    }
+    .auction-card {
+      &__title {
+      }
+
+      &__timer {
+      }
+
+      &__button {
+      }
+    }
+    .timer {
+      &__item {
+      }
+
+      &__num {
+      }
+
+      &__text {
+      }
+    }
+    .btn-bid {
+      &__text {
+      }
+
+      &__bg {
+      }
+
+      &__gradient-bg {
+      }
+    }
+  }
+}
+
+//________EXPLORE-COLLECTIONS________//
+
+.collections {
+  &__container {
+    display: flex;
+    gap: 130px;
+    @include adaptiveValue('gap', 130, 7, 0, 1920, 768);
+    justify-content: space-between;
+    @media (width<toEm(1024)) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media (width<toEm(1400)) {
+      max-width: 1100px !important;
+    }
+  }
+
+  &__content {
+    flex: 0 1 784px;
+  }
+
+  &__gallery {
+    flex: 0 1 479px;
+    @media (width<toEm(768)) {
+      flex: none;
+    }
+
+    img {
+      aspect-ratio: 435/814;
+      object-fit: contain;
+      @media (width<toEm(768)) {
+        width: 185px;
+        height: 347px;
+      }
+    }
+  }
+}
+.content {
+  &__title {
+    margin-top: 52px;
+    padding-left: 3px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 27, 16, 0, 1920, 600);
+  }
+
+  &__items {
+    @include adaptiveValue('padding-top', 42, 20, 0, 1920, 600);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include adaptiveValue('gap', 43, 17.86, 0, 1920, 600);
+  }
+
+  &__item {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 26, 10, 0, 1920, 600);
+    text-align: center;
+    padding: 31px 0px 33px;
+    border: 3px solid;
+    border-image: linear-gradient(-45deg, #ffa6fa 47%, #3c79d4 97%) 1;
+    flex: 0 1 47.25%;
+    @media (width<toEm(1400)) {
+      flex: 1 1 44.25%;
+    }
+    @media (width<toEm(768)) {
+      padding: 10px 0px 14px;
+      flex: 1 1 44.25%;
+    }
+
+    &--active {
+      background: black;
+      background: linear-gradient(
+        130deg,
+        #ff56f6 18.31%,
+        #b936ee 43.26%,
+        #3bace2 85.44%,
+        #406aff 100%
+      );
+      box-shadow: 0 4px 107px 0 rgba(255, 86, 246, 0.51);
+    }
+  }
+
+  &__link {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 19, 8, 0, 1920, 600);
+    display: block;
+    justify-self: end;
+    @include adaptiveValue('margin-top', 43.11, 16.11, 0, 1920, 600);
+    display: flex;
+    align-items: center;
+    @include adaptiveValue('gap', 15, 6, 0, 1920, 600);
+    &::after {
+      content: '';
+      background: url('../img/explore-collections/arrow.svg');
+      @include adaptiveValue('width', 51.96, 21.53, 0, 1920, 600);
+      @include adaptiveValue('height', 15.48, 6.41, 0, 1920, 600);
+
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+//_____________BLOGERS_____________//
+
+.blogers {
+  padding-left: 16px;
+  @media (width <toEm(1000)) {
+    padding-left: 0;
+  }
+  &__container {
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 26, 18, 0, 1920, 600);
+  }
+
+  &__link {
+    @media (width<toEm(1000)) {
+      display: none;
+    }
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 26, 18, 0, 1920, 600);
+
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    &::after {
+      content: '';
+      background: url('../img/topNfts/arrow-right-view-text.svg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 47px;
+      height: 27px;
+    }
+    @media (width<toEm(768)) {
+      display: none;
+    }
+  }
+
+  &__items {
+    @include adaptiveValue('margin-top', 53, 33, 0, 1920, 600);
+    display: flex;
+    @include adaptiveValue('gap', 37, 30, 0, 1920, 768);
+    @media (width<toEm(1400)) {
+    }
+
+    @media (width<toEm(924)) {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__card {
+  }
+}
+.card-blogers {
+  @media (width<toEm(924)) {
+    flex: 1 0 298.51px;
+    flex-wrap: nowrap;
+  }
+  @media (width<toEm(1400)) {
+  }
+  @media (width<toEm(500)) {
+    // max-width: 298.51px;
+  }
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 39px;
+  flex-wrap: wrap;
+  &__background {
+  }
+
+  &__avatar {
+    @include adaptiveValue('margin-top', -104, -70, 0, 1920, 600);
+
+    @media (width<toEm(1024)) {
+      width: 112px;
+      height: 112px;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    @include adaptiveValue('font-size', 24, 16, 0, 1920, 768);
+    @include adaptiveValue('margin-top', 13, 8, 0, 1920, 600);
+    @include adaptiveValue('margin-bottom', 10, 7, 0, 1920, 600);
+  }
+
+  &__nickname {
+    font-weight: 400;
+    @include adaptiveValue('font-size', 20, 13, 0, 1920, 768);
+    @include adaptiveValue('margin-bottom', 37, 26, 0, 1920, 600);
+    color: $white-opacity;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &::after {
+      content: '';
+      background: url('../img/hero/check.png');
+
+      width: 15.84px;
+      height: 17.28px;
+      @media (width<toEm(768)) {
+        width: 10px;
+        height: 11px;
+      }
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__followers {
+    @include adaptiveValue('margin-bottom', 42, 24, 0, 1920, 600);
+  }
+
+  &__button {
+    border: 3px solid;
+    border-image: linear-gradient(-45deg, #ffa6fa 47%, #3c79d4 97%) 1;
+    @include adaptiveValue('font-size', 19, 13, 0, 1920, 768);
+    background: linear-gradient(
+      130deg,
+      #ff56f6 18.31%,
+      #b936ee 43.26%,
+      #3bace2 85.44%,
+      #406aff 100%
+    );
+    box-shadow: 0 4px 107px 0 rgba(255, 86, 246, 0.51);
+    padding: 12px 92px;
+    @media (width<toEm(768)) {
+      padding: 10px 65px;
+    }
+  }
+}
+.followers {
+  display: flex;
+  @include adaptiveValue('gap', 70.96, 47, 0, 1920, 600);
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__number {
+    margin-bottom: 8px;
+    font-weight: 600;
+    @include adaptiveValue('font-size', 31, 21, 0, 1920, 768);
+  }
+
+  &__text {
+    font-weight: 500;
+    @include adaptiveValue('font-size', 19, 13, 0, 1920, 768);
+    color: $white-opacity;
+  }
+}
+
+//___________TOP SELLERS___________//
+
+.sellers {
+  text-align: center;
+
+  &__container {
+    max-width: 1395px !important ;
+  }
+
+  &__title {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 24, 19, 0, 1920, 600);
+    span {
+      color: #ff56f6;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      &::after {
+        content: '';
+        background: url('../img/top-sellers/shevron.svg');
+        @include adaptiveValue('width', 13, 9, 0, 1920, 650);
+        @include adaptiveValue('height', 8, 6, 0, 1920, 650);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+    @include adaptiveValue('margin-bottom', 30, 19, 0, 1920, 600);
+  }
+
+  &__text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    @include adaptiveValue('font-size', 17, 14, 0, 1920, 600);
+    text-align: center;
+    max-width: toRem(506);
+    margin: 0 auto;
+    line-height: 1.5;
+    word-spacing: 2px;
+    @include adaptiveValue('margin-bottom', 62, 23, 0, 1920, 650);
+  }
+
+  &__items {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fill, minmax(min(toRem(400), 100%), 1fr));
+    @include adaptiveValue('column-gap', 35, 20, 0, 1920, 650);
+    @include adaptiveValue('row-gap', 43, 22, 0, 1920, 650);
+    @include adaptiveValue('margin-bottom', 72, 23, 0, 1920, 650);
+    @media (width<toEm(866)) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (width<toEm(768)) {
+      grid-template-columns: repeat(auto-fill, minmax(min(toRem(400), 100%), 1fr));
+      max-height: 442px;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      html[data-topSellers-open] & {
+        max-height: 1500px;
+      }
+    }
+
+    .item-sellers {
+      text-align: left;
+      border: 2px solid rgba(255, 177, 238, 0.1);
+      backdrop-filter: blur(76px);
+      border-radius: 29px;
+      display: flex;
+      align-items: center;
+      padding: 23px 16px 17px 30px;
+      @include adaptiveValue('gap', 17, 10, 0, 1920, 650);
+      @media (width<toEm(768)) {
+        padding: 16px 12px 21px 18px;
+      }
+      @media (toEm(500) < width < toEm(768)) {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      &__ordinal {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        @include adaptiveValue('gap', 19, 13, 0, 1920, 650);
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      &__image {
+        aspect-ratio: 1;
+        @media (width<toEm(768)) {
+          width: 50.63px;
+          height: 50.63px;
+          object-fit: contain;
+        }
+      }
+
+      &__text {
+        flex-grow: 1;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        @include adaptiveValue('gap', 24, 10, 0, 1920, 650);
+        padding-left: 5px;
+      }
+
+      &__name {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        @include adaptiveValue('font-size', 19, 13, 0, 1920, 650);
+      }
+
+      &__num {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        @include adaptiveValue('font-size', 13, 9, 0, 1920, 650);
+        color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        &::before {
+          content: '';
+          background: url('../img/top-sellers/rombik.svg');
+          @include adaptiveValue('width', 9, 7, 0, 1920, 650);
+          @include adaptiveValue('height', 14, 10, 0, 1920, 650);
+        }
+      }
+
+      &__percent {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        @include adaptiveValue('font-size', 14, 10, 0, 1920, 650);
+        color: $green;
+        background: linear-gradient(135deg, rgba(0, 178, 71, 0.15) 0%, rgba(0, 178, 71, 0.15) 100%);
+        border-color: rgba(0, 178, 71, 0.25);
+        border: 1px solid;
+        border-radius: 18px;
+        padding: 7px 18px;
+
+        &--red {
+          color: $red;
+          border-color: rgba(255, 0, 0, 0.25);
+          background: linear-gradient(135deg, rgba(255, 0, 0, 0.15));
+        }
+      }
+    }
+  }
+  .sellers__button.btn-bid {
+    display: inline-flex;
+
+    padding: 0 86px;
+    @media (width<toEm(768)) {
+      clip-path: polygon(100% 0%, 100% 75.25%, 85% 100%, 0% 100%, 0% 29.75%, 18.75% 0%);
+      padding: 0 27px;
+      height: 42px;
+    }
+    &::after {
+      @media (width>toEm(768)) {
+        display: none;
+      }
+    }
+    .btn-bid__text {
+      @include adaptiveValue('font-size', 19, 12, 0, 1920, 400);
+      @media (width<toEm(768)) {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+      }
+      span {
+        @media (width<toEm(768)) {
+          display: none;
+        }
+      }
+    }
+
+    .btn-bid__bg {
+      @media (width<toEm(768)) {
+        clip-path: polygon(100% 0%, 100% 75.25%, 85% 100%, 0% 100%, 0% 29.75%, 18.75% 0%);
+        background: #20083b;
+      }
+    }
+
+    .btn-bid__gradient-bg {
+    }
+  }
+}
+//__________ABOUT-NFT_________//
+
+.about-nft {
+  aspect-ratio: 1602.33/556.37;
+  @media (width<toEm(380)) {
+    aspect-ratio: 378/398;
+  }
+
+  position: relative;
+  &__gallery {
+    position: absolute;
+    width: 100%;
+    height: 83%;
+    top: 0;
+    left: 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  &__container {
+    min-height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    border: 3px solid rgba(255, 177, 238, 0.1);
+    backdrop-filter: blur(toEm(40));
+    background: rgba(255, 255, 255, 0.1);
+    padding: 63px 78px 30px 66px;
+    @media (width<toEm(1600)) {
+      padding: 30px 30px 30px 30px;
+    }
+  }
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    @include adaptiveValue('font-size', 44, 25, 0, 1920, 768);
+    @include adaptiveValue('margin-bottom', 23.8, 25, 0, 1920, 768);
+  }
+
+  &__description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    @include adaptiveValue('font-size', 20, 11, 0, 1920, 768);
+    @include adaptiveValue('max-width', 458, 266.46, 0, 1920, 600);
+    @include adaptiveValue('margin-bottom', 51.8, 25, 0, 1920, 768);
+
+    line-height: 1.78;
+  }
+
+  &__actions {
+    @include adaptiveValue('gap', 20, 7, 0, 1920, 768);
+    display: flex;
+    align-items: center;
+  }
+
+  &__button {
+  }
+
+  &__button--primary,
+  &__video-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    @include adaptiveValue('font-size', 17, 10, 0, 1920, 768);
+  }
+
+  &__video-link {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    &::before {
+      content: '';
+      background: url('../img/about-nft/play.svg');
+      @include adaptiveValue('width', 13, 8, 0, 1920, 768);
+      @include adaptiveValue('height', 18, 11, 0, 1920, 768);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+//_______SUBSCRIBE_________//
+
+.subscribe {
+  &__container {
+    display: flex;
+    @include adaptiveValue('gap', 84, 101, 0, 1920, 768);
+    @media (width<toEm(1104)) {
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    // flex: 0 1 697px;
+    @media (width<toEm(1104)) {
+      order: 2;
+    }
+    @media (width<toEm(376)) {
+      width: 326px;
+      height: 380px;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex-shrink: 1;
+    @media (width<toEm(1104)) {
+      order: 1;
+      align-self: center;
+    }
+  }
+
+  &__title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 39, 26, 0, 1920, 768);
+    @include adaptiveValue('margin-top', 37, 20, 0, 1920, 768);
+    @include adaptiveValue('margin-bottom', 34, 20, 0, 1920, 768);
+  }
+
+  &__text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    @include adaptiveValue('font-size', 19, 13, 0, 1920, 768);
+    line-height: 1.78;
+    max-width: toRem(491);
+    @include adaptiveValue('margin-bottom', 55, 29, 0, 1920, 768);
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    @include adaptiveValue('gap', 5, 5, 0, 1920, 768);
+  }
+
+  &__input {
+    background-color: $white;
+    padding: 13px 18px;
+    border-radius: 6px 0 0 6px;
+    flex: 0 1 275px;
+    @media (width<toEm(768)) {
+      flex: 0 1 181px;
+    }
+    &::placeholder {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      @include adaptiveValue('font-size', 15, 10, 0, 1920, 768);
+    }
+  }
+
+  &__button {
+    flex: 0 1 144px;
+    padding: 14px 0;
+    border-radius: 0 6px 6px 0;
+    &::before {
+      border-radius: 0 6px 6px 0;
+    }
+    @media (width<toEm(768)) {
+      flex: 0 1 95px;
+    }
+    span {
+      @include adaptiveValue('font-size', 15, 10, 0, 1920, 768);
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,316 @@
+// Міксіни
+@use '_mixins.scss' as *;
+// Типографія
+@use '_typo.scss' as *;
+@use 'colors' as *;
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  // Розміри за макетом (приблизно)
+  padding: toRem(7.74) toRem(10);
+  width: 100%;
+  min-height: toRem(37.59);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: toRem(17);
+  border-radius: toRem(8); // Закруглення замість зрізів
+  background: linear-gradient(90deg, #ff56f6 0%, #43a5e3 100%);
+  transition: transform 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: toRem(2);
+    left: toRem(2);
+    right: toRem(2);
+    bottom: toRem(2);
+    background: linear-gradient(90deg, #43a5e3 0%, #ff56f6 100%);
+    border-radius: toRem(4);
+    z-index: 1;
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: toRem(8);
+
+    &::after {
+      content: '';
+      display: inline-block;
+      background: url('../img/hero/arrow-right.png') center / contain no-repeat;
+      width: toRem(24);
+      height: toRem(10);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  // Ховер ефект
+  html:not([data-fls-touch]) & {
+    &:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+
+      span::after {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+.card {
+  // @include adaptiveValue('width', 438, 303.97, 0, 1400, 400);
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  width: 100%;
+
+  &__image-link {
+    aspect-ratio: 438/385;
+    img {
+      width: 100%;
+    }
+  }
+  @media (width<toEm(400)) {
+    // width: 300px;
+  }
+
+  &__content {
+    background: linear-gradient(rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(79.20033264160156px);
+    border: 1px solid $white-opacity;
+    display: flex;
+    justify-content: space-between;
+    padding: 45px 21px 19px 35px;
+    @media (width<toEm(1200)) {
+      padding: 34px 14px 23px 21px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-shrink: 0;
+    @media (width<toEm(1200)) {
+      flex-shrink: 1;
+    }
+  }
+
+  &__auction {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.info-card {
+  &__title {
+    font-weight: 700;
+    @include adaptiveValue('font-size', 23, 13, 0, 1920, 600);
+    @include adaptiveValue('margin-bottom', 13, 7, 0, 1920, 600);
+  }
+
+  &__author {
+    margin-bottom: 26px;
+  }
+
+  &__avatar {
+    @media (width<toEm(768)) {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+  }
+
+  &__nickname {
+    @include adaptiveValue('font-size', 20, 11, 0, 1920, 600);
+  }
+
+  &__check {
+    width: 15px;
+    height: 17px;
+    object-fit: contain;
+    @media (width<toEm(768)) {
+      width: 10px;
+      height: 11px;
+      object-fit: contain;
+    }
+  }
+
+  &__price {
+  }
+
+  &__label {
+    @include adaptiveValue('font-size', 14, 8, 0, 1920, 600);
+    @include adaptiveValue('margin-bottom', 20, 8, 0, 1920, 600);
+  }
+
+  &__eth {
+    display: flex;
+    align-items: center;
+    gap: 7.2px;
+    padding-left: -10px;
+
+    img {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+    }
+  }
+
+  &__value {
+    font-weight: 700;
+    @include adaptiveValue('font-size', 16, 7, 0, 1920, 600);
+  }
+
+  &__fiat {
+    font-weight: 400;
+    @include adaptiveValue('font-size', 14, 8, 0, 1920, 600);
+  }
+}
+
+.auction-card {
+  &__title {
+    @include adaptiveValue('font-size', 14, 8, 0, 1920, 600);
+    padding-left: 6px;
+  }
+
+  &__timer {
+  }
+
+  &__button {
+  }
+}
+.timer {
+  display: flex;
+  gap: 23.4px;
+  margin-bottom: 10px;
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+  padding-bottom: 4px;
+  padding-left: 6px;
+
+  @media (width<toEm(768)) {
+    padding-bottom: 0;
+  }
+
+  &__num {
+    @include adaptiveValue('font-size', 23, 13, 0, 1920, 600);
+  }
+
+  &__text {
+    @include adaptiveValue('font-size', 14, 8, 0, 1920, 600);
+    color: $white-opacity;
+  }
+}
+.btn-bid {
+  &__text {
+  }
+
+  &__bg {
+  }
+
+  &__gradient-bg {
+  }
+}
+
+.timer {
+}
+
+.btn-bid {
+  &::after {
+    position: relative;
+    z-index: 5;
+    content: '';
+    background: url('../img/topNfts/arrow--big.svg');
+    width: 31.68px;
+    height: 12.01px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include adaptiveValue('min-width', 155.52, 107.99, 0, 1400, 400);
+  @include adaptiveValue('height', 48.96, 34, 0, 1400, 400);
+  overflow: hidden; // Обрізаємо все, що виступає
+  z-index: 1;
+  gap: toRem(12.96);
+
+  &__text {
+    position: relative;
+    z-index: 5; // Текст вище за всі фони
+    color: $white;
+    pointer-events: none;
+    @include adaptiveValue('font-size', 23, 13, 0, 1400, 400);
+    font-weight: 500;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 2px; // Товщина рамки
+    left: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 86, 246, 1) 18%,
+      rgba(185, 54, 238, 1) 43%,
+      rgba(59, 172, 226, 1) 85%,
+      rgba(64, 106, 255, 1) 100%
+    ); // Твій основний фон
+
+    html:not([data-fls-touch]) & {
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(64, 106, 255, 1) 18%,
+          rgba(255, 86, 246, 1) 85%,
+          rgba(185, 54, 238, 1) 100%
+        );
+      }
+    }
+
+    z-index: 2;
+  }
+
+  &__gradient-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%; // Дуже великий об'єкт
+    height: 500px;
+    background: conic-gradient(
+      from 180deg at 50% 50%,
+      #ffa6fa 0%,
+      // Починаємо з рожевого
+      #3c79d4 50%,
+      // Переходимо в блакитний на середині
+      #ffa6fa 100% // Повертаємося в рожевий для безшовного стику
+    );
+    z-index: 1;
+    // Поєднуємо центрування і обертання
+    animation: rotateBg 3s linear infinite;
+  }
+}
+
+@keyframes rotateBg {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

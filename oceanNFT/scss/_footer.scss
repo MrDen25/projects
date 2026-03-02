@@ -1,0 +1,209 @@
+// Міксіни
+@use '_mixins.scss' as *;
+// Типографія
+@use '_typo.scss' as *;
+@use 'colors' as *;
+
+.footer {
+  &__container {
+    display: flex;
+    // justify-content: space-between;
+    @include adaptiveValue('gap', 90, 57, 0, 1920, 768);
+    max-width: 1436px !important;
+    @media (width<toEm(1600)) {
+      max-width: 1300px !important;
+    }
+    @media (width<toEm(1300)) {
+      flex-direction: column;
+    }
+  }
+
+  &__contacts {
+    @media (width>toEm(768)) {
+      flex: 0 1 282px;
+    }
+  }
+
+  &__body {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(toRem(177), 100%), 1fr));
+    // @include adaptiveValue('gap', 33, 15, 0, 1920, 768);
+
+    @include adaptiveValue('row-gap', 90, 20, 0, 1920, 768);
+
+    @media (width<toEm(1300)) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @media (width<toEm(768)) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__column {
+  }
+
+  &__bottom {
+  }
+
+  .contacts {
+    &__logo {
+      @include adaptiveValue('margin-bottom', 32, 33, 0, 1920, 768);
+    }
+
+    &__text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: toRem(15);
+      line-height: 1.71;
+      max-width: 266px;
+      @media (width<toEm(768)) {
+        max-width: 320px;
+      }
+      @include adaptiveValue('margin-bottom', 32, 25, 0, 1920, 768);
+      color: $white-opacity;
+    }
+
+    &__social {
+    }
+
+    &__list {
+      display: flex;
+      @include adaptiveValue('gap', 20, 20, 0, 1920, 768);
+    }
+
+    &__item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px;
+      border-radius: 50%;
+      transition: scale 0.3s;
+      html:not([data-fls-touch]) & {
+        &:hover {
+          scale: 1.2;
+        }
+      }
+    }
+
+    &__link {
+    }
+
+    &__image {
+    }
+  }
+  .column {
+    &__title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: toRem(19);
+      @include adaptiveValue('margin-bottom', 32, 25, 0, 1920, 768);
+      @media (width<toEm(768)) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      @media (width<toEm(768)) {
+        &::after {
+          content: '';
+          background: url('../img/footer/shevron.svg');
+          width: 15px;
+          height: 8px;
+          background-size: contain;
+          padding-right: 36px;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    &__list {
+      @media (width<toEm(768)) {
+        border-top: 1px solid $white-opacity;
+      }
+
+      //   padding-top: 20px;
+      @media (width<toEm(768)) {
+        overflow: hidden;
+      }
+      transition: all 0.3s;
+    }
+    &__item--new {
+      ::after {
+        content: 'new';
+        font-family: 'MuseoModerno', sans-serif;
+        font-weight: 400;
+        font-size: toRem(20);
+        color: #2ec5ce;
+        margin-left: 10px;
+      }
+    }
+
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: toRem(23);
+      }
+    }
+
+    &__link {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: toRem(15);
+      color: $white-opacity;
+      transition: color 0.2s;
+      html:not([data-fls-touch]) & {
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+  .bottom {
+    &__container {
+      max-width: 1436px !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media (width<toEm(768)) {
+        flex-direction: column;
+        @include adaptiveValue('gap', 20, 50, 0, 1920, 768);
+      }
+    }
+
+    &__rights {
+      @media (width<toEm(768)) {
+        order: 2;
+      }
+    }
+
+    &__rights,
+    &__polite {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: toRem(15);
+      color: $white-opacity;
+    }
+
+    &__polite {
+      @media (width>toEm(1600)) {
+        margin-right: 95px;
+      }
+      @media (width<toEm(768)) {
+        order: 1;
+      }
+    }
+
+    &__list {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    &__item--not-active {
+      @media (width<toEm(768)) {
+        display: none;
+      }
+    }
+    &__item {
+    }
+  }
+  .polite {
+  }
+}
