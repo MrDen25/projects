@@ -500,7 +500,7 @@
     display: flex;
     gap: 130px;
     @include adaptiveValue('gap', 130, 7, 0, 1920, 768);
-    justify-content: space-between;
+    // justify-content: space-between;
     @media (width<toEm(1024)) {
       flex-wrap: wrap;
       justify-content: center;
@@ -515,17 +515,28 @@
   }
 
   &__gallery {
-    flex: 0 1 479px;
+    flex: 0 1 442px;
     @media (width<toEm(768)) {
       flex: none;
     }
 
     img {
+      width: 100%;
+      height: auto;
       aspect-ratio: 435/814;
-      object-fit: contain;
+      object-fit: cover;
       @media (width<toEm(768)) {
         width: 185px;
         height: 347px;
+      }
+      transition:
+        opacity 0.4s ease-in-out,
+        transform 0.4s ease-in-out;
+      opacity: 1;
+
+      &.fade-out {
+        opacity: 0;
+        transform: scale(0.98); // Легкий ефект зменшення при зміні
       }
     }
   }
@@ -556,6 +567,12 @@
     border: 3px solid;
     border-image: linear-gradient(-45deg, #ffa6fa 47%, #3c79d4 97%) 1;
     flex: 0 1 47.25%;
+    transition: box-shadow 0.2s;
+    html:not([data-fls-touch]) & {
+      &:hover {
+        box-shadow: 0 4px 107px 0 rgba(255, 86, 246, 0.51);
+      }
+    }
     @media (width<toEm(1400)) {
       flex: 1 1 44.25%;
     }
@@ -737,6 +754,15 @@
     );
     box-shadow: 0 4px 107px 0 rgba(255, 86, 246, 0.51);
     padding: 12px 92px;
+    transition:
+      scale 0.3s,
+      color 0.3s;
+    html:not([data-fls-touch]) & {
+      &:hover {
+        scale: 1.1;
+        color: $white-opacity;
+      }
+    }
     @media (width<toEm(768)) {
       padding: 10px 65px;
     }

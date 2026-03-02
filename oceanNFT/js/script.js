@@ -11,6 +11,45 @@ function load() {
 		// Додавання data-fls-touch для HTML, якщо браузер мобільний
 		if (isMobile.any()) document.documentElement.setAttribute('data-fls-touch', '')
 	}
+
+
+
+
+	const contentItems = document.querySelector('.content__items');
+
+	contentItems.addEventListener('click', (e) => {
+		const btn = e.target.closest('.content__item');
+		if (!btn) return;
+
+		// 1. Зміна активного класу кнопок
+		document.querySelector('.content__item--active').classList.remove('content__item--active');
+		btn.classList.add('content__item--active');
+
+		// 2. Зміна картинки
+		const newSrc = btn.dataset.src;
+		const img = document.querySelector('.collections__gallery img');
+
+		img.classList.add('fade-out'); // додаємо заздалегідь створений клас анімації
+
+		setTimeout(() => {
+			img.src = newSrc;
+			img.classList.remove('fade-out');
+		}, 200);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// function initSubMenu() {
 	// 	const matchMedia = window.matchMedia(`(width <= 41.875em)`)
 	// 	const subMenu = document.querySelector('.sub-menu')

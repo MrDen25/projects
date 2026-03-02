@@ -28,6 +28,8 @@
   }
 
   &__logo {
+    position: relative;
+    z-index: 5;
     img {
       max-width: none;
     }
@@ -110,13 +112,14 @@
     top: 0;
     left: 100%;
     padding: toRem(100) toRem(15) toRem(30) toRem(15);
+    background-color: rgb(35, 15, 68);
     overflow: auto;
     transition: left 0.3s;
     &::before {
       content: '';
       width: 100%;
       height: toRem(60);
-      background-color: #9782eb;
+      background-color: rgb(35, 15, 68);
       position: fixed;
       top: 0%;
       left: 100%;
