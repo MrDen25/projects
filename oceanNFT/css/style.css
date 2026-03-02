@@ -2943,12 +2943,12 @@ html:not([data-fls-touch]) .card-blogers__button:hover {
 }
 @media (min-width: 40.625em) and (max-width: 120em) {
   .sellers__items .item-sellers__num::before {
-    width: clamp( 7px , 5.9763779528px  +  0.157480315vw , 9px );
+    width: clamp( 9px , 9px  +  0vw , 9px );
   }
 }
 @media (max-width: 40.625em) {
   .sellers__items .item-sellers__num::before {
-    width: 7px;
+    width: 9px;
   }
 }
 @media (min-width: 120em) {
@@ -2958,13 +2958,16 @@ html:not([data-fls-touch]) .card-blogers__button:hover {
 }
 @media (min-width: 40.625em) and (max-width: 120em) {
   .sellers__items .item-sellers__num::before {
-    height: clamp( 10px , 7.9527559055px  +  0.3149606299vw , 14px );
+    height: clamp( 14px , 14px  +  0vw , 14px );
   }
 }
 @media (max-width: 40.625em) {
   .sellers__items .item-sellers__num::before {
-    height: 10px;
+    height: 14px;
   }
+}
+.sellers__items .item-sellers__num::before {
+  background-repeat: no-repeat;
 }
 .sellers__items .item-sellers__percent {
   font-family: "Roboto", sans-serif;

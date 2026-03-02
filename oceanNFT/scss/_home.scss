@@ -915,8 +915,9 @@
         &::before {
           content: '';
           background: url('../img/top-sellers/rombik.svg');
-          @include adaptiveValue('width', 9, 7, 0, 1920, 650);
-          @include adaptiveValue('height', 14, 10, 0, 1920, 650);
+          @include adaptiveValue('width', 9, 9, 0, 1920, 650);
+          @include adaptiveValue('height', 14, 14, 0, 1920, 650);
+          background-repeat: no-repeat;
         }
       }
 
