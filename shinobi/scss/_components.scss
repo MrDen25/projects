@@ -1,0 +1,39 @@
+// Міксіни
+@use '_mixins.scss' as *;
+// Типографія
+@use '_typo.scss' as *;
+@use 'colors' as *;
+
+.button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  @include adaptiveValue('font-size', 25, 16, 0, 1920, 425);
+  color: $colorBlackBlack;
+  @include adaptiveValue('border-radius', 30, 20, 0, 1920, 450);
+  background-color: $colorYellow;
+  text-align: center;
+  @include adaptiveValue('width', 367, 243, 0, 1920, 450);
+  @include adaptiveValue('height', 97, 64, 0, 1920, 450);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  transition: scale 0.4s;
+  html:not([data-fls-touch]) & {
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
+
+.icon {
+  transition: scale 0.3s;
+  @media (width<toEm(768)) {
+    display: none;
+  }
+  html:not([data-fls-touch]) & {
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}

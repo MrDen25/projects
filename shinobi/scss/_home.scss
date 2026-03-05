@@ -1,0 +1,329 @@
+// Міксіни
+@use '_mixins.scss' as *;
+// Типографія
+@use '_typo.scss' as *;
+@use 'colors' as *;
+
+//______HERO_______//
+
+.page {
+  .hero {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    &__title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 60, 30, 0, 1920, 425);
+      text-transform: uppercase;
+      max-width: toRem(1030);
+      line-height: 1.22;
+      @include adaptiveValue('margin-bottom', 29, 8, 0, 1920, 425);
+
+      span {
+        @include adaptiveValue('font-size', 80, 40, 0, 1920, 425);
+        color: $colorYellow;
+      }
+    }
+
+    &__subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      @include adaptiveValue('font-size', 30, 15, 0, 1920, 425);
+      line-height: 1.22;
+      @include adaptiveValue('margin-bottom', 27, 26, 0, 1920, 425);
+    }
+
+    &__text {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      @include adaptiveValue('font-size', 25, 13, 0, 1920, 425);
+      color: $colorYellow;
+      line-height: 1.22;
+      background-color: $colorBlack-two;
+      border-radius: 20px;
+      padding: 13px 25px;
+      @include adaptiveValue('margin-bottom', 40, 34, 0, 1920, 425);
+    }
+
+    &__button {
+      @include adaptiveValue('margin-bottom', 43, 20, 0, 1920, 425);
+    }
+  }
+}
+
+//_________PROMO________//
+.page {
+  .promo {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1193px !important;
+    }
+
+    &__text {
+      @include adaptiveValue('margin-bottom', 79, 50, 0, 1920, 425);
+    }
+
+    &__features {
+      @include adaptiveValue('margin-bottom', 49, 50, 0, 1920, 425);
+    }
+
+    &__button {
+      @include adaptiveValue('margin-bottom', 42, 50, 0, 1920, 425);
+      @media (width<toEm(625)) {
+        display: none;
+      }
+    }
+
+    &__icon {
+      @media (width<toEm(625)) {
+        display: none;
+      }
+    }
+  }
+  .text-promo {
+    display: flex;
+    align-items: center;
+    align-self: start;
+    @include adaptiveValue('gap', 37, 7, 0, 1920, 425);
+    @media (width<toEm(625)) {
+      flex-direction: column;
+      align-self: stretch;
+    }
+    &__title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 75, 35, 0, 1920, 425);
+      text-transform: uppercase;
+      color: $colorWhite;
+    }
+
+    &__text {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 30, 14, 0, 1920, 425);
+      color: $colorBlackBlack;
+      background-color: $colorWhiteTwo;
+      border-radius: 20px;
+      padding: 12px 25px;
+
+      @media (width<toEm(625)) {
+        padding: 9px 15px;
+      }
+    }
+  }
+  .features-promo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include adaptiveValue('gap', 158, 54, 0, 1920, 425);
+
+    @media (width<toEm(662)) {
+      flex-direction: column;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      @include adaptiveValue('gap', 39, 5, 0, 1920, 425);
+    }
+
+    &__title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      @include adaptiveValue('font-size', 40, 20, 0, 1920, 425);
+      text-transform: uppercase;
+    }
+
+    &__icon {
+      @media (width<toEm(768)) {
+        width: 23px;
+        height: 10px;
+      }
+    }
+
+    &__text {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 40, 18, 0, 1920, 425);
+      border-radius: 20px;
+      box-shadow: 0 4px 15px 0 $colorBlackBlack;
+      background-color: $colorBlack-three;
+      padding: 12px 35px;
+    }
+  }
+}
+
+//___COMPARISION_____//
+.page {
+  .comparison {
+    &__container {
+      position: relative;
+      display: flex;
+      @include adaptiveValue('gap', 50, 20, 0, 1920, 625);
+      max-width: 1619px !important;
+      @media (width<toEm(1500)) {
+        justify-content: center;
+      }
+      @media (width<toEm(768)) {
+        flex-direction: column;
+      }
+    }
+
+    &__gallery {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 821px;
+      @media (width<toEm(1500)) {
+        align-items: center;
+        flex: 0 1 400px;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      @media (width<toEm(768)) {
+        width: 300px;
+      }
+    }
+
+    &__icon {
+      align-self: flex-end;
+      position: relative;
+      bottom: 35px;
+      left: 10px;
+      @media (width<toEm(1500)) {
+        position: absolute;
+        left: 50%;
+        top: 100%;
+      }
+    }
+
+    &__text {
+      flex: 0 1 531px;
+      @media (width<toEm(1500)) {
+        flex: 0 1 600px;
+      }
+      @media (width<toEm(768)) {
+        flex: 0 1 auto;
+      }
+    }
+  }
+  .text-comparison {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue('gap', 39, 27, 0, 1920, 768);
+    width: 100%;
+    min-height: 500px;
+    margin-top: -28px;
+    @media (width<toEm(1500)) {
+      min-height: auto;
+    }
+    &__title {
+      align-self: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 90, 35, 0, 1920, 625);
+      text-transform: uppercase;
+      @media (width<toEm(625)) {
+        align-self: stretch;
+        margin-left: 45px;
+      }
+    }
+
+    &__body {
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      text-align: right;
+      width: 100%;
+      @media (width<toEm(768)) {
+        align-items: start;
+        text-align: left;
+      }
+    }
+
+    &__item {
+      width: fit-content;
+      @include adaptiveValue('font-size', 20, 15, 0, 1920, 625);
+      align-self: flex-end;
+      text-align: right;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      position: relative;
+      @media (width<toEm(768)) {
+        flex-direction: row-reverse;
+        align-self: start;
+        text-align: left;
+        gap: 10px;
+      }
+      &:not(:last-child) {
+        @include adaptiveValue('margin-bottom', 34, 16, 0, 1920, 625);
+      }
+      &::after {
+        // position: absolute;
+        // left: calc(100% + 31px);
+        content: '';
+        background: url('../img/comparison/arrow-left.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        flex: 0 0 49px;
+        height: 23px;
+        margin-left: 34px;
+        @media (width<toEm(1200)) {
+          flex: 0 0 39px;
+          height: 15px;
+        }
+        @media (width<toEm(768)) {
+          rotate: 180deg;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+//___STEPS____//
+
+.page {
+  .steps {
+    &__container {
+      max-width: 1196px !important;
+      @media (width<toEm(768)) {
+      }
+    }
+
+    &__title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 69, 29, 0, 1920, 625);
+      text-transform: uppercase;
+      color: $colorWhite;
+      @media (width<toEm(768)) {
+        padding-left: 44px;
+      }
+      span {
+        display: inline-block;
+        color: $colorBlackBlack;
+        background-color: $colorYellow;
+        padding: 17px 14px;
+        @media (width<toEm(768)) {
+          padding: 2px 0px;
+        }
+      }
+    }
+  }
+}

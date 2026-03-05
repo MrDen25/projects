@@ -1,0 +1,67 @@
+@use 'sass:math';
+// Скидання стилів
+@use '_reset.scss';
+// Шрифти
+@use '_fonts.scss';
+// Іконки
+@use '_icons.scss';
+// Міксіни
+@use '_mixins.scss' as *;
+// Кольори
+// @use "_colors.scss" as *;
+// Типографія
+@use '_typo.scss' as *;
+// Компоненти
+@use '_components.scss' as *;
+// Header
+@use '_header.scss';
+// Footer
+@use '_footer.scss';
+
+// Pages
+@use '_home.scss';
+@use 'colors' as *;
+
+body {
+  font-family: Raleway, sans-serif;
+  font-weight: 500;
+  background-color: $colorBlack-one;
+  color: $colorWhite;
+
+  [data-menu-open] & {
+    overflow: hidden;
+  }
+}
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper > main {
+  flex-grow: 1;
+}
+[class*='__container'] {
+  @include adaptiveValue('padding-inline', 15, 15, 0, 1920, 400);
+  max-width: 1222px;
+  margin: 0 auto;
+  @media (width<toEm(425)) {
+    max-width: 333px;
+  }
+}
+
+.page {
+  &__hero {
+    @include adaptiveValue('margin-top', 178, 97, 0, 1920, 425);
+  }
+  &__promo {
+    @include adaptiveValue('margin-top', 144, 88, 0, 1920, 425);
+  }
+  &__comparison {
+    @include adaptiveValue('margin-top', 117, 41, 0, 1920, 425);
+  }
+  &__steps {
+    @include adaptiveValue('margin-top', 92, 197, 0, 1920, 425);
+  }
+}

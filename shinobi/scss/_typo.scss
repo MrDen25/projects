@@ -1,0 +1,8 @@
+// Міксіни
+@use '_mixins.scss' as *;
+
+@mixin h1($max-size: 47, $min-size: 30, $line-height: normal, $font-weight: 400) {
+  line-height: $line-height;
+  font-weight: $font-weight;
+  @include adaptiveValue('font-size', $max-size, $min-size, 0, 1920, 768);
+}
