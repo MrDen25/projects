@@ -25,7 +25,7 @@
 body {
   font-family: Raleway, sans-serif;
   font-weight: 500;
-  background-color: $colorBlack-one;
+  background-color: $colorBlackBlack;
   color: $colorWhite;
 
   [data-menu-open] & {
@@ -50,6 +50,11 @@ body {
     max-width: 333px;
   }
 }
+br {
+  @media (width<toEm(768)) {
+    display: none;
+  }
+}
 
 .page {
   &__hero {
@@ -63,5 +68,31 @@ body {
   }
   &__steps {
     @include adaptiveValue('margin-top', 92, 197, 0, 1920, 425);
+  }
+  &__workflow {
+    @include adaptiveValue('padding-top', 103, 179, 0, 1920, 425);
+  }
+  &__process {
+    @include adaptiveValue('padding-top', 157, 114, 0, 1920, 425);
+    // @include adaptiveValue('padding-bottom', 157, 114, 0, 1920, 425);
+  }
+  &__stages {
+    @include adaptiveValue('padding-top', 106, 85, 0, 1920, 425);
+    @include adaptiveValue('padding-bottom', 5, 5, 0, 1920, 425);
+  }
+  &__journey {
+    @include adaptiveValue('margin-top', 78, 138, 0, 1920, 425);
+  }
+  &__ideal {
+    @include adaptiveValue('margin-top', 127, 103, 0, 1920, 425);
+  }
+  &__circle {
+    @include adaptiveValue('margin-top', 239, 140, 0, 1920, 425);
+  }
+  &__slider {
+    @include adaptiveValue('margin-top', 136, 83, 0, 1920, 425);
+  }
+  &__price {
+    @include adaptiveValue('margin-top', 359, 139, 0, 1920, 425);
   }
 }

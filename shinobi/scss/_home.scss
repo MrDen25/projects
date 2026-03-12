@@ -300,30 +300,1137 @@
 
 .page {
   .steps {
+    &__title {
+      @media (width<toEm(768)) {
+        padding-left: 44px;
+      }
+    }
+    position: relative;
+    @media (width>toEm(768)) {
+      padding-bottom: 200px;
+    }
     &__container {
       max-width: 1196px !important;
       @media (width<toEm(768)) {
       }
     }
 
+    &__numbers {
+      margin-bottom: 51px;
+    }
+    &__icon {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media (width<toEm(768)) {
+        display: none;
+      }
+    }
+    &__image {
+      position: absolute;
+      bottom: 0%;
+      left: 0;
+      z-index: 1;
+      display: inline-block;
+      @media (width<toEm(1024)) {
+        display: none;
+      }
+      @media (width>toEm(768)) {
+        // &::before {
+        //   content: '';
+        //   position: absolute;
+        //   top: 36%;
+        //   left: 0%;
+        //   width: 200vw;
+        //   height: 100%;
+        //   background-color: $colorBlack-one;
+        //   transform: rotate(-4deg); // Повертаємо тільки фон
+        //   z-index: -1; // Ховаємо під картинку
+        // }
+      }
+    }
+  }
+  .numbers-steps {
+    @include adaptiveValue('margin-top', 128, 50, 0, 1920, 768);
+    border-top: 1px solid $colorWhiteOpacity;
+    display: flex;
+    justify-content: center;
+    @media (width<toEm(768)) {
+      flex-direction: column;
+      border-top: none;
+      border-left: 1px solid $colorWhiteOpacity;
+      margin-left: 57px;
+      align-items: start;
+      gap: 59px;
+    }
+
+    &__item {
+      flex: 0 1 253px;
+      position: relative;
+      @media (width<toEm(768)) {
+        flex: auto;
+        display: flex;
+        align-items: center;
+        padding-left: 28px;
+        gap: 36px;
+        padding-right: 15px;
+      }
+      &::before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        background-color: $colorWhite;
+        position: absolute;
+        top: -19px;
+        left: 50%;
+        translate: -50% 0%;
+        opacity: 0;
+        transition:
+          opacity 0.3s,
+          left 0.3s;
+        @media (width<toEm(768)) {
+          width: 19px;
+          height: 19px;
+          top: 50%;
+          left: 0;
+        }
+      }
+
+      &_active {
+        &::before {
+          opacity: 1;
+        }
+        .numbers-steps__value {
+          color: $colorYellow;
+        }
+        .numbers-steps__text {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    &__value {
+      padding-top: 22px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 75, 60, 0, 1920, 768);
+      text-transform: uppercase;
+      text-align: center;
+      transition: color 0.5s;
+      @include adaptiveValue('margin-bottom', 10, 0, 0, 1920, 768);
+      @media (width<toEm(768)) {
+        text-align: left;
+        padding-top: 0;
+      }
+
+      html:not([data-fls-touch]) & {
+        cursor: pointer;
+      }
+    }
+
+    &__text {
+      text-wrap: wrap;
+      font-size: 22px;
+      @include adaptiveValue('font-size', 22, 15, 0, 1920, 768);
+      text-align: center;
+      letter-spacing: -1.5px;
+      line-height: 1.2;
+      opacity: 0;
+      transition: opacity 0.5s;
+      visibility: hidden;
+      color: $colorWhiteOpacity;
+      span {
+        color: $colorWhite;
+      }
+      @media (width<toEm(768)) {
+        position: absolute;
+        left: 135%;
+        width: 200px;
+        text-align: left;
+        letter-spacing: 0px;
+      }
+    }
+  }
+}
+
+//__WORKFLOW__//
+
+.page {
+  .workflow {
+    position: relative;
+    z-index: 1;
+    background-color: $colorBlack-one;
+    &__container {
+    }
+
+    &__text {
+      display: flex;
+      gap: toRem(277);
+      @include adaptiveValue('margin-bottom', 70, 62, 0, 1920, 625);
+      @media (width<toEm(1800)) {
+        gap: toRem(20);
+        justify-content: space-between;
+      }
+      @media (width<toEm(768)) {
+        flex-direction: column;
+        gap: toRem(61);
+      }
+    }
+
+    &__column {
+    }
+
+    &__label {
+      font-family: 'Raleway', sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      @include adaptiveValue('font-size', 30, 20, 0, 1920, 625);
+      text-align: left;
+      color: $colorYellow;
+      text-decoration: underline;
+      @include adaptiveValue('margin-bottom', 41, 44, 0, 1920, 625);
+      text-underline-offset: 8px;
+    }
+
     &__title {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      @include adaptiveValue('font-size', 69, 29, 0, 1920, 625);
+      @include adaptiveValue('font-size', 75, 40, 0, 1920, 625);
       text-transform: uppercase;
-      color: $colorWhite;
-      @media (width<toEm(768)) {
-        padding-left: 44px;
+      &_margin-money {
+        @include adaptiveValue('margin-left', 100, 68, 0, 1920, 625);
       }
+      &_margin-charts {
+        @include adaptiveValue('margin-left', 52, 48, 0, 1920, 625);
+      }
+    }
+    &__actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .workflow__button {
+        @include adaptiveValue('margin-bottom', 12, 10, 0, 1920, 625);
+      }
+      .workflow__icon {
+      }
+    }
+  }
+}
+
+//___PROCESS__//
+.page {
+  .process {
+    background-color: $colorBlack-one;
+    &__title {
+      @include adaptiveValue('margin-bottom', 7, 11, 0, 1920, 425);
+      @media (width>toEm(1200)) {
+        font-size: toRem(72);
+        margin-left: 23px;
+      }
+      @media (width<toEm(768)) {
+        font-size: 26px;
+      }
+    }
+    &__container {
+    }
+
+    &__label {
+      font-family: 'Raleway', sans-serif;
+      font-style: italic;
+      font-weight: 600;
+      @include adaptiveValue('font-size', 25, 15, 0, 1920, 425);
+      color: $colorYellow;
+      box-shadow: 0 4px 15px 0 #161618;
+      background: linear-gradient(180deg, #1b1b1b 0%, rgba(27, 27, 27, 0) 100%);
+      max-width: 329px;
+      padding: 12px 0px;
+      border-radius: 20px;
+      @include adaptiveValue('margin-bottom', 40, 26, 0, 1920, 425);
+      @media (width>=toEm(768)) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 16px;
+      }
+
       span {
-        display: inline-block;
-        color: $colorBlackBlack;
-        background-color: $colorYellow;
-        padding: 17px 14px;
-        @media (width<toEm(768)) {
-          padding: 2px 0px;
+      }
+    }
+
+    &__wrapper {
+      @media (width>=toEm(768)) {
+        box-shadow: 0 4px 28px 0 rgba(0, 0, 0, 0.52);
+        background: #161618;
+        padding: 40px 0px;
+        margin-bottom: 19px;
+      }
+    }
+
+    &__item {
+    }
+    .process__wrapper {
+      .process__container {
+        @media (width>=toEm(768)) {
+          max-width: 1268px;
         }
       }
+    }
+    &__list {
+      @media (width>=toEm(768)) {
+        display: flex;
+      }
+    }
+    &__icon-wrapper {
+      @media (width>=toEm(768)) {
+        margin-top: 52px;
+        text-align: center;
+        img {
+        }
+      }
+    }
+  }
+  .item-process {
+    // flex: 0 1 238px;
+    // flex-grow: 1;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+    @media (width>=toEm(768)) {
+      border-image: linear-gradient(
+          rgba(255, 255, 255, 0),
+          rgb(255, 255, 255),
+          rgba(255, 255, 255, 0)
+        )
+        1;
+      width: 1000px;
+      &:not(:last-child) {
+        border-right: toRem(1) solid;
+      }
+    }
+    @media (width<toEm(768)) {
+      flex-direction: row;
+      text-align: left;
+      align-items: center;
+      padding-bottom: 20px;
+      gap: 10px;
+    }
+
+    &__circle {
+      width: 15px;
+      height: 15px;
+      border: 1px solid $colorYellow;
+      outline: 1px solid $colorYellow;
+      outline-offset: 5px;
+      border-radius: 50%;
+      background: $colorYellow;
+      margin-bottom: toRem(9);
+      @media (width<toEm(768)) {
+        width: 7px;
+        height: 7px;
+        outline-offset: 1px;
+        margin-bottom: 0;
+      }
+    }
+
+    &__text {
+      @include adaptiveValue('font-size', 22, 13, 0, 1920, 768);
+    }
+  }
+}
+
+//___STAGES___//
+.page {
+  .stages {
+    background-color: $colorBlack-one;
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1197px !important;
+      @media (width<toEm(1200)) {
+        max-width: 900px !important;
+      }
+    }
+
+    &__subcontent {
+      align-self: start;
+      display: flex;
+      align-items: center;
+      @include adaptiveValue('margin-bottom', 97, 55, 0, 1920, 768);
+      @include adaptiveValue('gap', 20, 13, 0, 1920, 768);
+      @media (width<toEm(569)) {
+        flex-direction: column;
+        align-items: start;
+        margin-left: 46px;
+      }
+      @media (width<toEm(400)) {
+        margin-left: 0;
+      }
+    }
+
+    &__content {
+      align-self: start;
+      display: flex;
+      align-items: center;
+      @include adaptiveValue('gap', 155, 12, 0, 1920, 768);
+      @include adaptiveValue('margin-bottom', 92, 38, 0, 1920, 768);
+      @media (width<toEm(569)) {
+        flex-direction: column;
+        align-items: start;
+        margin-left: 73px;
+      }
+      @media (width<toEm(400)) {
+        margin-left: 0;
+      }
+    }
+
+    &__registration {
+      display: flex;
+      @include adaptiveValue('gap', 57, 24, 0, 1920, 768);
+      align-self: start;
+      margin-left: 149px;
+      width: 100%;
+      transition: scale 0.3s;
+
+      .stages__button-image {
+        transition: scale 0.3s;
+        html:not([data-fls-touch]) & {
+          &:hover {
+            cursor: pointer;
+            scale: 1.1;
+          }
+        }
+      }
+
+      @media (width<toEm(838)) {
+        margin-left: 0;
+      }
+      @media (width<toEm(768)) {
+        margin-left: 45px;
+      }
+      @media (width<toEm(400)) {
+        margin-left: 0;
+        gap: 10px;
+      }
+    }
+
+    &__arrow {
+      flex: 0 1 auto;
+      @media (width<toEm(768)) {
+        max-width: 167px;
+      }
+    }
+    &__button-wrapper {
+      position: relative;
+      flex-shrink: 0;
+      @media (width<toEm(768)) {
+        width: 128px;
+        height: 112px;
+      }
+    }
+
+    &__button {
+      position: absolute;
+      font-weight: 700;
+      font-size: 20px;
+      color: $colorBlackBlack;
+      top: 43%;
+      left: 13%;
+      pointer-events: none;
+
+      @media (width<toEm(768)) {
+        font-size: 12px;
+        top: 42%;
+        left: 16%;
+      }
+    }
+
+    &__icon {
+      margin-top: -15px;
+      margin-left: -6px;
+    }
+  }
+  .subcontent-stages {
+    &__title {
+      position: relative;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 68, 30, 0, 1920, 425);
+      text-transform: uppercase;
+      text-wrap: nowrap;
+      span {
+        color: $colorYellow;
+      }
+
+      &::after {
+        @media (width>=toEm(569)) {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 2px;
+          width: 110%;
+          background-color: $colorWhiteOpacity;
+          top: 135%;
+        }
+      }
+    }
+
+    &__text {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      @include adaptiveValue('font-size', 22, 14, 0, 1920, 425);
+      text-align: right;
+      color: $colorWhiteOpacity;
+      position: relative;
+      span {
+        color: $colorWhite;
+      }
+      @media (width<toEm(569)) {
+        text-align: left;
+      }
+      @media (width<toEm(569)) {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          background-color: $colorWhiteOpacity;
+          top: 144%;
+        }
+      }
+    }
+  }
+  .content-stages {
+    &__text {
+      position: relative;
+      @include adaptiveValue('font-size', 22, 14, 0, 1920, 425);
+      flex: 0 1 388px;
+      span {
+        color: $colorWhiteOpacity;
+      }
+      @media (width<toEm(569)) {
+        flex: auto;
+        order: 2;
+        text-align: right;
+      }
+      @media (width<toEm(569)) {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 2px;
+          width: 108%;
+          background-color: #c3c3c3;
+          top: 132%;
+          left: -23%;
+        }
+      }
+      @media (width<toEm(400)) {
+        text-align: left;
+      }
+    }
+
+    &__title {
+      position: relative;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 70, 30, 0, 1920, 425);
+      text-transform: uppercase;
+      text-wrap: nowrap;
+      span {
+        color: $colorYellow;
+      }
+      @media (width<toEm(569)) {
+        order: 1;
+      }
+      &::after {
+        @media (width>=toEm(569)) {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 2px;
+          width: 120%;
+          background-color: #c3c3c3;
+          top: 149%;
+          right: 1%;
+        }
+      }
+    }
+  }
+}
+
+//__JOURNEY__//
+.page {
+  .journey {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1188px !important;
+      @media (width<toEm(1400)) {
+        max-width: 1000px !important;
+      }
+    }
+
+    &__title {
+      align-self: start;
+      @include adaptiveValue('font-size', 73, 29, 0, 1920, 425);
+      @include adaptiveValue('margin-bottom', 87, 65, 0, 1920, 425);
+      @media (width<toEm(560)) {
+        margin-left: 46px;
+      }
+      @media (width<toEm(380)) {
+        margin-left: 0;
+      }
+    }
+
+    &__items {
+      align-self: stretch;
+      display: flex;
+      justify-content: space-between;
+      @include adaptiveValue('margin-bottom', 144, 50, 0, 1920, 625);
+      @include adaptiveValue('gap', 100, 50, 0, 1920, 768);
+      @media (width<toEm(560)) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    &__item {
+      position: relative;
+      max-width: 455px;
+      border-radius: 20px;
+      background: $colorBlackBlack;
+      padding: 18px 18px 18px 18px;
+      width: 100%;
+      @media (width<toEm(560)) {
+        flex-grow: 1;
+        max-width: 78%;
+        padding: 18px 33px 18px 33px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        border-radius: 20px;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0)
+        );
+
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+
+        pointer-events: none;
+      }
+    }
+
+    &__icon {
+    }
+  }
+
+  .item-journey {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__image {
+      @include adaptiveValue('margin-bottom', 25, 26, 0, 1920, 625);
+      @media (width<toEm(560)) {
+        width: 86px;
+        height: 86px;
+        object-fit: contain;
+      }
+    }
+
+    &__title {
+      font-weight: 600;
+      @include adaptiveValue('font-size', 35, 20, 0, 1920, 768);
+      color: $colorYellow;
+      @include adaptiveValue('margin-bottom', 37, 27, 0, 1920, 625);
+    }
+
+    &__text {
+      text-align: center;
+      @include adaptiveValue('font-size', 22, 13, 0, 1920, 768);
+      line-height: 1.25;
+    }
+  }
+}
+
+//__IDEAL___//
+.page {
+  .ideal {
+    @media (width<toEm(500)) {
+      margin-left: 47px;
+    }
+    @media (width<toEm(380)) {
+      margin-left: 0;
+    }
+    &__container {
+      max-width: 1196px !important;
+      @media (width<toEm(1400)) {
+        max-width: 900px !important;
+      }
+      @media (width<toEm(1200)) {
+        max-width: 850px !important;
+      }
+      @media (width<toEm(1000)) {
+        max-width: 750px !important;
+      }
+      @media (width<toEm(800)) {
+        max-width: 650px !important;
+      }
+      @media (width<toEm(600)) {
+        max-width: 550px !important;
+      }
+      @media (width<toEm(500)) {
+        max-width: 450px !important;
+      }
+    }
+
+    &__header {
+    }
+
+    &__footer {
+    }
+  }
+  .header-ideal {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      @include adaptiveValue('font-size', 47, 20, 0, 1920, 768);
+      text-transform: uppercase;
+      @include adaptiveValue('margin-bottom', 13, 10, 0, 1920, 768);
+      @media (width>toEm(768)) {
+        letter-spacing: -1px;
+        word-spacing: 7px;
+      }
+    }
+
+    &__text {
+      align-self: flex-end;
+      font-style: italic;
+      @include adaptiveValue('font-size', 50, 20, 0, 1920, 768);
+      text-transform: uppercase;
+      color: $colorYellow;
+      @include adaptiveValue('margin-bottom', 16, 24, 0, 1920, 768);
+
+      @media (width>toEm(380)) {
+        margin-right: 32px;
+      }
+      @media (width>toEm(768)) {
+        margin-right: 77px;
+      }
+    }
+  }
+  .footer-ideal {
+    display: flex;
+    flex-direction: column;
+    &__title {
+      align-self: end;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 142, 35, 0, 1920, 768);
+      text-transform: uppercase;
+      @include adaptiveValue('margin-bottom', 78, 29, 0, 1920, 768);
+      @media (width>toEm(768)) {
+        margin-right: 81px;
+      }
+      @media (width>toEm(380)) {
+        margin-right: 79px;
+      }
+    }
+
+    &__text {
+      font-style: italic;
+      @include adaptiveValue('font-size', 26, 13, 0, 1920, 768);
+      line-height: 1.25;
+
+      .footer-ideal__span_gray {
+        color: $colorWhiteOpacity;
+      }
+      .footer-ideal__span_yellow {
+        display: inline-block;
+        color: $colorYellow;
+        padding: 7px 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px 0 #000;
+        background: linear-gradient(180deg, #1b1b1b 0%, rgba(27, 27, 27, 0) 100%);
+
+        @media (width<toEm(450)) {
+          margin-top: 19px;
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+}
+
+//__CICLE___//
+.page {
+  .circle {
+    background-color: $colorBlack-one;
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    &__wrapper {
+      width: 303px;
+      height: 303px;
+      border-radius: 50%;
+      background-color: $colorBlack-one;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border: 2px solid $colorWhite;
+      position: relative;
+      top: -120px;
+      gap: 15px;
+      @media (width<toEm(600)) {
+        width: 150px;
+        height: 150px;
+        top: -67px;
+        border: 2px solid $colorYellow;
+      }
+      &::before {
+        position: absolute;
+        top: -33px;
+
+        content: '';
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background-color: $colorBlack-one;
+        z-index: -2;
+        @media (width<toEm(600)) {
+          width: 250px;
+          height: 250px;
+        }
+      }
+    }
+    &__image {
+      position: absolute;
+      pointer-events: none;
+      @media (width<toEm(425)) {
+        top: -36px;
+      }
+    }
+
+    &__text {
+      font-style: italic;
+      @include adaptiveValue('font-size', 26, 13, 0, 1920, 768);
+      color: $colorWhiteOpacity;
+    }
+    &__suptext {
+      font-weight: 700;
+      @include adaptiveValue('font-size', 35, 16, 0, 1920, 768);
+    }
+
+    &__title {
+      @include adaptiveValue('font-size', 26, 12, 0, 1920, 768);
+      @include adaptiveValue('margin-top', -18, -15, 0, 1920, 768);
+      @include adaptiveValue('margin-bottom', 43, 29, 0, 1920, 768);
+      @media (width<toEm(768)) {
+        line-height: 1.25;
+        text-align: center;
+      }
+    }
+
+    &__button {
+      @include adaptiveValue('margin-bottom', 62, 12, 0, 1920, 768);
+    }
+    &__brand {
+      @media (width<toEm(768)) {
+        display: none;
+      }
+    }
+  }
+}
+
+//__SLIDER__//
+.page {
+  .slider {
+    &__container {
+      max-width: 1186px !important; // Або твоя ширина контенту
+    }
+    &__title {
+      align-self: start;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 70, 27, 0, 1920, 768);
+      text-transform: uppercase;
+      @include adaptiveValue('margin-bottom', 114, 72, 0, 1920, 768);
+
+      @media (width<toEm(768)) {
+        margin-left: 50px;
+        max-width: 263px;
+        line-height: 1.25;
+      }
+      @media (width<toEm(400)) {
+        margin-left: 0;
+      }
+    }
+
+    &__swiper {
+      overflow: visible;
+      width: 100%;
+      max-width: 1200px; // Або твоя ширина контенту
+      margin: 0 auto;
+      margin-bottom: 11px;
+    }
+
+    &__wrapper {
+    }
+
+    &__slide {
+      width: 72%;
+      transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+      opacity: 0.4;
+      transform: scale(0.8);
+
+      cursor: pointer;
+      @media (width>toEm(768)) {
+        height: 474px;
+      }
+      @media (width<toEm(768)) {
+      }
+      &.swiper-slide-active {
+        opacity: 1;
+        transform: scale(1); // Активний слайд у повному розмірі
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      @media (width<toEm(768)) {
+        height: 171px;
+      }
+    }
+  }
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper {
+  }
+  .swiper-wrapper {
+  }
+  .swiper-slide {
+  }
+}
+
+//__PRICE__//
+.page {
+  .price {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__title {
+      align-self: start;
+      @include adaptiveValue('margin-bottom', 20, 13, 0, 1920, 425);
+    }
+
+    &__text {
+      @include adaptiveValue('font-size', 26, 13, 0, 1920, 425);
+      color: $colorWhiteOpacity;
+      line-height: 1.33;
+      max-width: 700px;
+      word-spacing: 0px;
+      letter-spacing: 0px;
+      @include adaptiveValue('margin-bottom', 20, 13, 0, 1920, 425);
+      @media (width>toEm(768)) {
+        margin-left: 92px;
+      }
+      span {
+        color: $colorWhite;
+      }
+      @media (width<toEm(768)) {
+        font-style: italic;
+      }
+    }
+
+    &__item {
+    }
+
+    &__button {
+      @include adaptiveValue('margin-bottom', 53, 13, 0, 1920, 425);
+    }
+
+    &__icon {
+    }
+  }
+
+  .item-price {
+    position: relative;
+    padding: 22px;
+    max-width: 601px;
+    @include adaptiveValue('margin-bottom', 54, 13, 0, 1920, 425);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 2px; // Товщина рамки
+      border-radius: 20px;
+
+      // Використовуємо лінійний градієнт від білого до жовтого
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #ffffff 20%,
+        // Тримаємо білий трохи довше зверху
+        #ebfc56 100%
+      );
+
+      // Маска залишається такою ж, вона робить "дірку" всередині фону, створюючи рамку
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    &__wrapper {
+      background-color: #131215;
+      position: relative;
+      border-radius: 20px;
+      padding: 25px 25px 60px 25px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1px; // Товщина рамки
+        border-radius: 20px;
+
+        // Оновлений градієнт: від прозорого білого до суцільного білого
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 0%,
+          // Прозорий білий (FFFFF 0%)
+          rgba(255, 255, 255, 1) 100% // Суцільний білий (FFFFF 100%)
+        );
+
+        // Маска залишається без змін, вона створює ефект рамки
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+    }
+
+    &__title {
+      font-weight: 600;
+      @include adaptiveValue('font-size', 45, 22, 0, 1920, 425);
+      color: $colorYellow;
+      @include adaptiveValue('margin-top', 72, 13, 0, 1920, 425);
+      @include adaptiveValue('margin-bottom', 38, 13, 0, 1920, 425);
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      @include adaptiveValue('gap', 18, 5, 0, 1920, 768);
+      @include adaptiveValue('margin-bottom', 62, 13, 0, 1920, 425);
+    }
+
+    &__item {
+      @include adaptiveValue('font-size', 20, 11, 0, 1920, 425);
+      line-height: 1.1;
+      padding-left: 25px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      &::before {
+        content: '';
+        top: 4px;
+        left: -6px;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background-color: $colorYellow;
+        border-radius: 50%;
+        @media (width<toEm(768)) {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+
+    &__label {
+      font-style: italic;
+      font-weight: 600;
+      font-size: 25px;
+      @include adaptiveValue('font-size', 25, 14, 0, 1920, 425);
+      text-align: center;
+      color: $colorYellow;
+      background-color: $colorBlack-one;
+      width: 109%;
+      padding: 18px 18px;
+      box-shadow: 0 4px 15px 0 #000;
+      @include adaptiveValue('margin-bottom', 21, 13, 0, 1920, 425);
+
+      @media (width>toEm(768)) {
+      }
+    }
+
+    &__discount {
+      font-weight: 600;
+      @include adaptiveValue('font-size', 35, 18, 0, 1920, 425);
+      text-decoration: line-through;
+      text-decoration-thickness: 3px;
+      color: $colorWhiteOpacity;
+      @include adaptiveValue('margin-bottom', 21, 13, 0, 1920, 425);
+    }
+
+    &__price {
+      font-weight: 600;
+      @include adaptiveValue('font-size', 45, 23, 0, 1920, 768);
+      @include adaptiveValue('margin-bottom', 33, 13, 0, 1920, 425);
+    }
+
+    &__text {
+      font-style: italic;
+      @include adaptiveValue('font-size', 20, 11, 0, 1920, 425);
     }
   }
 }

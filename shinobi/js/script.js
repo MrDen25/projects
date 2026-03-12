@@ -11,6 +11,33 @@ function load() {
 		// Додавання data-fls-touch для HTML, якщо браузер мобільний
 		if (isMobile.any()) document.documentElement.setAttribute('data-fls-touch', '')
 	}
+	const swiper = new Swiper('.slider__swiper', {
+		// Основні налаштування
+		centeredSlides: true,
+		slidesPerView: 'auto',
+		loop: true,
+		spaceBetween: 0,
+		loopedSlides: 3,
+		slideToClickedSlide: true, // Відступ між слайдами (коригуй під макет)
+
+		// Ефекти (можна додати плавності)
+		speed: 800,
+
+		// Якщо потрібна пагінація або стрілки, додай їх сюди:
+		/*
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		*/
+
+		// Адаптивність (якщо на мобілці треба інший відступ)
+		breakpoints: {
+			768: {
+				spaceBetween: 40,
+			}
+		}
+	});
 
 
 	const menu = document.querySelector('.menu__list');
@@ -84,6 +111,7 @@ function load() {
 
 
 
+
 	// function initFooterMenus() {
 	// 	const footerMenus = document.querySelectorAll('.column__list')
 	// 	if (footerMenus.length) {
@@ -111,6 +139,24 @@ function load() {
 
 	function documentActions(e) {
 		const targetElement = e.target
+		if (targetElement.closest(".numbers-steps__value")) {
+
+			const currentItem = targetElement.parentElement;
+
+			if (!currentItem.classList.contains("numbers-steps__item_active")) {
+
+				const activeItems = document.querySelectorAll(".numbers-steps__item_active");
+				activeItems.forEach(item => {
+					item.classList.remove("numbers-steps__item_active");
+				});
+
+				// 4. Додаємо клас тільки поточному елементу
+				currentItem.classList.add("numbers-steps__item_active");
+			}
+		}
+
+
+
 		if (isMobile.any()) {
 			// if (targetElement.closest('.menu__sub-link')) {
 			// 	const subMenu = document.querySelector('.sub-menu')
@@ -174,6 +220,7 @@ function load() {
 				document.documentElement.toggleAttribute('data-topSellers-open')
 
 			}
+
 		}
 
 	}
