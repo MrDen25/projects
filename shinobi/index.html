@@ -5,15 +5,21 @@
 <html lang="ru">
 
 <head>
-	<!-- Кодування тексту -->
 	<meta charset="UTF-8">
-	<!-- Налаштування в'юпорту (адаптиву, масштабу тощо) -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--Підключення окремого файлу стилів -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<!-- Заголовок сторінки в браузері (вкладці) -->
-	<title>Home Page</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" as="style"
+		onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+	<noscript>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</noscript>
+
 	<!-- Відкрити усі вкладки в новій вкладці -->
 	<!-- <base target="_blank" href="/fonts/"> -->
 </head>
@@ -377,8 +383,8 @@
 
 		</footer>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-	<script src="js/script.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+	<script defer src="js/script.js"></script>
 </body>
 
 </html>
