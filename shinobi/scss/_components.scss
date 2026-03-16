@@ -27,14 +27,17 @@
 }
 
 .icon {
-  transition: scale 0.3s;
+  img {
+    transition: scale 0.3s;
+    html:not([data-fls-touch]) & {
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+
   @media (width<toEm(768)) {
     display: none;
-  }
-  html:not([data-fls-touch]) & {
-    &:hover {
-      scale: 1.1;
-    }
   }
 }
 .title-h2 {
@@ -52,5 +55,37 @@
     @media (width<toEm(768)) {
       padding: 2px 0px;
     }
+  }
+}
+
+.brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 100px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(136, 136, 136, 0.322);
+  line-height: 0.8;
+  &_left {
+  }
+
+  @media (width<toEm(768)) {
+    display: none;
+  }
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollrotate {
+  from {
+    transform: rotate(-3.8deg) translateX(0);
+  }
+  to {
+    transform: rotate(-3.8deg) translateX(-50%);
   }
 }

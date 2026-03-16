@@ -323,6 +323,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      &::after {
+        content: 'SHINOBI SHINOBI SHINOBI SHINOBI SHINOBI ';
+        display: block;
+        position: absolute;
+        max-width: 100%;
+        font-family: 'Orbitron', 'sans-serif';
+        font-size: 100px;
+        left: -164px;
+        top: 151%;
+        font-weight: 700;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(136, 136, 136, 0.322);
+        white-space: nowrap;
+        // transform: rotate(-3.8deg);
+        pointer-events: none;
+        user-select: none;
+        z-index: 5;
+        animation: scrollrotate 40s linear infinite;
+      }
       @media (width<toEm(768)) {
         display: none;
       }
@@ -349,6 +369,18 @@
         //   z-index: -1; // Ховаємо під картинку
         // }
       }
+    }
+    &__wrapper_brand {
+      position: relative;
+      top: -71px;
+      display: flex;
+      width: max-content;
+      animation: scroll 40s linear infinite;
+      gap: 25px;
+      rotate: -4deg;
+      z-index: 5;
+    }
+    &__brand {
     }
   }
   .numbers-steps {
@@ -459,6 +491,17 @@
 
 .page {
   .workflow {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      background: $colorBlack-one;
+      top: -131px;
+      height: 300px;
+      transform: skewY(-3.78deg);
+      z-index: -1;
+    }
     position: relative;
     z-index: 1;
     background-color: $colorBlack-one;
@@ -1163,10 +1206,11 @@
     &__button {
       @include adaptiveValue('margin-bottom', 62, 12, 0, 1920, 768);
     }
-    &__brand {
-      @media (width<toEm(768)) {
-        display: none;
-      }
+    &__wrapper-brand {
+      display: flex;
+      width: max-content;
+      animation: scroll 40s linear infinite;
+      gap: 25px;
     }
   }
 }

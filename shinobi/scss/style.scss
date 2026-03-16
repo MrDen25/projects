@@ -90,7 +90,7 @@ br {
     @include adaptiveValue('margin-top', 239, 140, 0, 1920, 425);
   }
   &__slider {
-    @include adaptiveValue('margin-top', 136, 83, 0, 1920, 425);
+    @include adaptiveValue('margin-top', 132, 83, 0, 1920, 425);
   }
   &__price {
     @include adaptiveValue('margin-top', 359, 139, 0, 1920, 425);

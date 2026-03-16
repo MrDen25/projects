@@ -164,17 +164,17 @@ html:not([data-fls-touch]) .button:hover {
   scale: 1.1;
 }
 
-.icon {
+.icon img {
   -webkit-transition: scale 0.3s;
   transition: scale 0.3s;
+}
+html:not([data-fls-touch]) .icon img:hover {
+  scale: 1.1;
 }
 @media (width < 48em) {
   .icon {
     display: none;
   }
-}
-html:not([data-fls-touch]) .icon:hover {
-  scale: 1.1;
 }
 
 .title-h2 {
@@ -212,6 +212,62 @@ html:not([data-fls-touch]) .icon:hover {
   }
 }
 
+.brand {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+  font-size: 100px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(136, 136, 136, 0.322);
+  line-height: 0.8;
+}
+@media (width < 48em) {
+  .brand {
+    display: none;
+  }
+}
+
+@-webkit-keyframes scroll {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+@-webkit-keyframes scrollrotate {
+  from {
+    -webkit-transform: rotate(-3.8deg) translateX(0);
+            transform: rotate(-3.8deg) translateX(0);
+  }
+  to {
+    -webkit-transform: rotate(-3.8deg) translateX(-50%);
+            transform: rotate(-3.8deg) translateX(-50%);
+  }
+}
+@keyframes scrollrotate {
+  from {
+    -webkit-transform: rotate(-3.8deg) translateX(0);
+            transform: rotate(-3.8deg) translateX(0);
+  }
+  to {
+    -webkit-transform: rotate(-3.8deg) translateX(-50%);
+            transform: rotate(-3.8deg) translateX(-50%);
+  }
+}
 .header {
   position: fixed;
   z-index: 50;
@@ -1468,6 +1524,29 @@ html:not([data-fls-touch]) .footer .menu-footer__link:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+}
+.page .steps__icon::after {
+  content: "SHINOBI SHINOBI SHINOBI SHINOBI SHINOBI ";
+  display: block;
+  position: absolute;
+  max-width: 100%;
+  font-family: "Orbitron", "sans-serif";
+  font-size: 100px;
+  left: -164px;
+  top: 151%;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(136, 136, 136, 0.322);
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: 5;
+  -webkit-animation: scrollrotate 40s linear infinite;
+          animation: scrollrotate 40s linear infinite;
 }
 @media (width < 48em) {
   .page .steps__icon {
@@ -1485,6 +1564,21 @@ html:not([data-fls-touch]) .footer .menu-footer__link:hover {
   .page .steps__image {
     display: none;
   }
+}
+.page .steps__wrapper_brand {
+  position: relative;
+  top: -71px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-animation: scroll 40s linear infinite;
+          animation: scroll 40s linear infinite;
+  gap: 25px;
+  rotate: -4deg;
+  z-index: 5;
 }
 @media (min-width: 120em) {
   .page .numbers-steps {
@@ -1670,6 +1764,19 @@ html:not([data-fls-touch]) .page .numbers-steps__value {
   }
 }
 
+.page .workflow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  background: #1e1e1e;
+  top: -131px;
+  height: 300px;
+  -webkit-transform: skewY(-3.78deg);
+      -ms-transform: skewY(-3.78deg);
+          transform: skewY(-3.78deg);
+  z-index: -1;
+}
 .page .workflow {
   position: relative;
   z-index: 1;
@@ -3096,10 +3203,16 @@ html:not([data-fls-touch]) .page .stages__registration .stages__button-image:hov
     margin-bottom: 12px;
   }
 }
-@media (width < 48em) {
-  .page .circle__brand {
-    display: none;
-  }
+.page .circle__wrapper-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-animation: scroll 40s linear infinite;
+          animation: scroll 40s linear infinite;
+  gap: 25px;
 }
 
 .page .slider__container {
@@ -4343,12 +4456,12 @@ body {
 }
 @media (min-width: 120em) {
   .page__slider {
-    margin-top: 136px;
+    margin-top: 132px;
   }
 }
 @media (min-width: 26.5625em) and (max-width: 120em) {
   .page__slider {
-    margin-top: clamp( 83px , 67.9331103679px  +  3.5451505017vw , 136px );
+    margin-top: clamp( 83px , 69.0702341137px  +  3.2775919732vw , 132px );
   }
 }
 @media (max-width: 26.5625em) {
