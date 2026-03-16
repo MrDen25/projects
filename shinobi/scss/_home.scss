@@ -1260,7 +1260,7 @@
 
     &__title {
       align-self: start;
-      @include adaptiveValue('margin-bottom', 20, 13, 0, 1920, 425);
+      @include adaptiveValue('margin-bottom', 20, 35, 0, 1920, 425);
     }
 
     &__text {
@@ -1298,6 +1298,9 @@
     padding: 22px;
     max-width: 601px;
     @include adaptiveValue('margin-bottom', 54, 13, 0, 1920, 425);
+    @media (width<toEm(768)) {
+      padding: 12px;
+    }
 
     &::before {
       content: '';
@@ -1333,6 +1336,10 @@
       flex-direction: column;
       align-items: center;
 
+      @media (width<toEm(768)) {
+        padding: 12px 12px 40px 12px;
+      }
+
       &::before {
         content: '';
         position: absolute;
@@ -1362,14 +1369,14 @@
       font-weight: 600;
       @include adaptiveValue('font-size', 45, 22, 0, 1920, 425);
       color: $colorYellow;
-      @include adaptiveValue('margin-top', 72, 13, 0, 1920, 425);
+      @include adaptiveValue('margin-top', 72, 30, 0, 1920, 425);
       @include adaptiveValue('margin-bottom', 38, 13, 0, 1920, 425);
     }
 
     &__list {
       display: flex;
       flex-direction: column;
-      @include adaptiveValue('gap', 18, 5, 0, 1920, 768);
+      @include adaptiveValue('gap', 18, 15, 0, 1920, 768);
       @include adaptiveValue('margin-bottom', 62, 13, 0, 1920, 425);
     }
 
@@ -1380,6 +1387,9 @@
       position: relative;
       display: flex;
       align-items: center;
+      @media (width<toEm(768)) {
+        padding-left: 13px;
+      }
       &::before {
         content: '';
         top: 4px;
@@ -1409,7 +1419,8 @@
       box-shadow: 0 4px 15px 0 #000;
       @include adaptiveValue('margin-bottom', 21, 13, 0, 1920, 425);
 
-      @media (width>toEm(768)) {
+      @media (width<toEm(768)) {
+        padding: 10px 10px;
       }
     }
 
@@ -1434,3 +1445,211 @@
     }
   }
 }
+
+//__VIDEO__//
+.page {
+  .video {
+    &__container {
+      max-width: 1208px !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__title {
+      align-self: start;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 75, 30, 0, 1920, 425);
+      text-transform: uppercase;
+      @include adaptiveValue('margin-bottom', 41, 12, 0, 1920, 425);
+      @media (width<toEm(768)) {
+        margin-left: 45px;
+      }
+      @media (width<toEm(380)) {
+        margin-left: 0px;
+      }
+    }
+
+    &__text {
+      align-self: start;
+      @include adaptiveValue('font-size', 26, 13, 0, 1920, 425);
+      @include adaptiveValue('margin-bottom', 88, 42, 0, 1920, 425);
+      @media (width<toEm(768)) {
+        margin-left: 45px;
+      }
+      @media (width<toEm(380)) {
+        margin-left: 0px;
+      }
+    }
+
+    &__content {
+      align-self: stretch;
+      aspect-ratio: 16 / 6.7;
+      border: 2px solid $colorWhite;
+      border-radius: 20px;
+      @include adaptiveValue('margin-bottom', 232, 22, 0, 1920, 425);
+      @media (width<toEm(768)) {
+        border-right: none;
+        border-left: none;
+        border-radius: 0;
+        aspect-ratio: 16 / 9.3;
+      }
+      iframe {
+        padding: 2px;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        @media (width<toEm(768)) {
+          border-radius: 0;
+        }
+      }
+    }
+
+    &__icon {
+    }
+  }
+}
+
+//__CANDLESTORM__//
+.page {
+  .candlestorm {
+    &__container {
+      max-width: 1193px !important;
+      @media (width<toEm(1400)) {
+        max-width: 1000px !important;
+      }
+    }
+
+    &__title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 56, 30, 0, 1920, 425);
+      text-transform: uppercase;
+      text-wrap: nowrap;
+      @include adaptiveValue('margin-bottom', 96, 52, 0, 1920, 425);
+      @media (width<toEm(768)) {
+        text-wrap: wrap;
+        margin-left: 45px;
+      }
+      @media (width<toEm(380)) {
+        margin-left: 0;
+        font-size: 28px;
+      }
+      span {
+        color: $colorBlack-one;
+      }
+    }
+
+    &__items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include adaptiveValue('row-gap', 71, 20, 0, 1920, 768);
+      @include adaptiveValue('column-gap', 60, 30, 0, 1920, 768);
+      margin-bottom: 11px;
+      @media (width<toEm(768)) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__item {
+      position: relative;
+      background-color: #1d1c1f;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 260px;
+      overflow: hidden;
+      @media (width<toEm(768)) {
+        // height: 152px;
+        height: 200px;
+        width: 65%;
+        margin: 0 auto;
+      }
+      @media (width<toEm(450)) {
+        height: 152px;
+        width: 100%;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: #26252a;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        top: -102px;
+        right: -34px;
+        @media (width<toEm(1000)) {
+          top: -104px;
+          right: -70px;
+        }
+        @media (width<toEm(1000)) {
+          top: -116px;
+          right: -94px;
+        }
+      }
+    }
+    &__button {
+      align-self: center;
+      justify-self: center;
+      @media (width<toEm(768)) {
+        display: none;
+      }
+    }
+    &__icon {
+      margin-left: 48.5%;
+    }
+  }
+
+  .item-candlestorm {
+    &__image {
+      @include adaptiveValue('margin-top', 9, 5, 0, 1920, 768);
+      @include adaptiveValue('margin-bottom', 12, 5, 0, 1920, 768);
+      aspect-ratio: 1;
+      @media (width<toEm(768)) {
+        width: 82px;
+        height: 82px;
+        object-fit: contain;
+      }
+    }
+
+    &__text {
+      @include adaptiveValue('font-size', 22, 14, 0, 1920, 425);
+      text-align: center;
+      max-width: 442px;
+      @media (width<toEm(768)) {
+        max-width: 266px;
+      }
+    }
+  }
+}
+
+//__DISCLAMER__//
+.page {
+  .disclamer {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__title {
+      font-weight: 300;
+      @include adaptiveValue('font-size', 40, 30, 0, 1920, 425);
+      text-transform: uppercase;
+      color: #b20000;
+      @include adaptiveValue('margin-bottom', 25, 13, 0, 1920, 425);
+    }
+
+    &__text {
+      font-weight: 400;
+      @include adaptiveValue('font-size', 20, 11, 0, 1920, 425);
+      text-align: center;
+      max-width: 1047px;
+      line-height: 1.16;
+    }
+  }
+}
+//__FOOTER__//

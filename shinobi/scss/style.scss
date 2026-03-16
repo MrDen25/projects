@@ -46,7 +46,7 @@ body {
   @include adaptiveValue('padding-inline', 15, 15, 0, 1920, 400);
   max-width: 1222px;
   margin: 0 auto;
-  @media (width<toEm(425)) {
+  @media (width<toEm(550)) {
     max-width: 333px;
   }
 }
@@ -95,4 +95,16 @@ br {
   &__price {
     @include adaptiveValue('margin-top', 359, 139, 0, 1920, 425);
   }
+  &__video {
+    @include adaptiveValue('margin-top', 133, 8, 0, 1920, 768);
+  }
+  &__candlestorm {
+    @include adaptiveValue('margin-top', 78, 115, 0, 1920, 768);
+  }
+  &__disclamer {
+    @include adaptiveValue('margin-top', 69, 115, 0, 1920, 768);
+  }
+}
+.footer {
+  @include adaptiveValue('margin-top', 103, 80, 0, 1920, 768);
 }
