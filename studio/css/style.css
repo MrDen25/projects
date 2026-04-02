@@ -178,17 +178,16 @@ select::-ms-expand {
   padding: 17px 20px;
   letter-spacing: 0.06em;
   pointer-events: all;
-  -webkit-transition: color 0.3s, -webkit-transform 0.3s;
-  transition: color 0.3s, -webkit-transform 0.3s;
-  transition: transform 0.3s, color 0.3s;
-  transition: transform 0.3s, color 0.3s, -webkit-transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 html:not([data-fls-touch]) .button-request:hover {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
-  color: #828282;
 }
 
 .header {
@@ -199,6 +198,12 @@ html:not([data-fls-touch]) .button-request:hover {
   z-index: 50;
   color: #fff;
   padding: 23px 0;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.header-scroll {
+  background-color: #080808;
 }
 
 .header__container {
@@ -234,6 +239,13 @@ html:not([data-fls-touch]) .button-request:hover {
   padding: 17px 48px;
   border: 1px solid rgba(253, 253, 253, 0.32);
   margin-right: 7px;
+  -webkit-transition: color 0.3s, background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+html:not([data-fls-touch]) .header__request:hover {
+  color: #080808;
+  background-color: #fff;
 }
 
 .header__inner {
@@ -274,6 +286,10 @@ html:not([data-fls-touch]) .button-request:hover {
       -ms-flex-align: center;
           align-items: center;
   gap: 48px;
+}
+
+html:not([data-fls-touch]) .header .menu__link:hover {
+  text-decoration: underline;
 }
 
 .header .menu .menu__link.menu__link_active {
@@ -501,6 +517,10 @@ html:not([data-fls-touch]) .button-request:hover {
   margin-bottom: 30px;
 }
 
+html:not([data-fls-touch]) .footer .mail-footer-top__mail-name a:hover {
+  text-decoration: underline;
+}
+
 .footer .mail-footer-top__lang-items {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -509,6 +529,10 @@ html:not([data-fls-touch]) .button-request:hover {
       -ms-flex-align: center;
           align-items: center;
   gap: 16px;
+}
+
+html:not([data-fls-touch]) .footer .mail-footer-top__lang-link:hover {
+  text-decoration: underline;
 }
 
 .footer .bottom-footer__container {
@@ -2439,6 +2463,10 @@ body {
     padding-inline: 8px;
     gap: 61px;
   }
+
+  .header .header__request_menu-open {
+    margin-top: 0px;
+  }
 }
 
 @media (width <= 43.625em) {
@@ -2649,7 +2677,7 @@ body {
 }
 
 @media (width > 58.75em) {
-  .footer .mail-footer-top {
+  .footer .top-footer__mail {
     display: none;
   }
 }

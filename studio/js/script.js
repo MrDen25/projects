@@ -62,39 +62,49 @@ if (heroSlider) {
 
 
 
-window.addEventListener('load', load)
-/* Перевірка мобільного браузера */
-const isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
-/* Додавання класу touch для HTML, якщо браузер мобільний */
-function addTouchAttr() {
-    // Додавання data-fls-touch для HTML, якщо браузер мобільний
-    if (isMobile.any()) document.documentElement.setAttribute('data-fls-touch', '')
-}
-addTouchAttr()
+// 2. Перевірка мобілки
+const isMobile = { Android: () => navigator.userAgent.match(/Android/i), BlackBerry: () => navigator.userAgent.match(/BlackBerry/i), iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i), Opera: () => navigator.userAgent.match(/Opera Mini/i), Windows: () => navigator.userAgent.match(/IEMobile/i), any: () => (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()) };
+
+if (isMobile.any()) document.documentElement.setAttribute('data-fls-touch', '');
+
+// 3. Основна логіка після завантаження
+window.addEventListener('load', load);
 
 function load() {
+    const header = document.querySelector('.header');
+
+    // Функція для скрол-дій
+    function scrollActions() {
+        const scrollY = window.scrollY;
 
 
-    document.addEventListener('click', documentActions)
 
-
-
-
-    function documentActions(e) {
-        const targetElement = e.target
-        if (isMobile.any()) {
-            if (targetElement.closest(".header__burger_menu")) {
-                document.documentElement.toggleAttribute('data-menu-open')
-
+        // Додавання класу на хедер (якщо він є в HTML)
+        if (header) {
+            if (scrollY > 50) {
+                header.classList.add('header-scroll');
+            } else {
+                header.classList.remove('header-scroll');
             }
-
-
         }
     }
 
+    // Функція для кліків
+    function documentActions(e) {
+        const targetElement = e.target;
+        if (isMobile.any()) {
+            if (targetElement.closest(".header__burger_menu")) {
+                document.documentElement.toggleAttribute('data-menu-open');
+            }
+        }
+    }
+
+    // Викликаємо скрол ОДРАЗУ, щоб перевірити стан при завантаженні
+    scrollActions();
+
+    // Слухачі подій (всі на одному рівні)
+    window.addEventListener("scroll", scrollActions);
+    document.addEventListener('click', documentActions);
 }
-
-
-
 
 
