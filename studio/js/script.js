@@ -46,14 +46,12 @@ if (heroSlider) {
         if (!currentEl || !totalEl || !fillEl) return;
 
         const current = s.realIndex + 1;
-        // Надійний спосіб вирахувати кількість слайдів без дублікатів loop
         const total = s.slides.filter(slide => !slide.classList.contains('swiper-slide-duplicate')).length;
 
-        // Оновлюємо текст (01, 02...)
         currentEl.textContent = current < 10 ? `0${current}` : current;
         totalEl.textContent = total < 10 ? `0${total}` : total;
 
-        // Оновлюємо прогрес-бар
+
         const progress = (current / total) * 100;
         fillEl.style.width = `${progress}%`;
     }
@@ -62,24 +60,21 @@ if (heroSlider) {
 
 
 
-// 2. Перевірка мобілки
 const isMobile = { Android: () => navigator.userAgent.match(/Android/i), BlackBerry: () => navigator.userAgent.match(/BlackBerry/i), iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i), Opera: () => navigator.userAgent.match(/Opera Mini/i), Windows: () => navigator.userAgent.match(/IEMobile/i), any: () => (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()) };
 
 if (isMobile.any()) document.documentElement.setAttribute('data-fls-touch', '');
 
-// 3. Основна логіка після завантаження
 window.addEventListener('load', load);
 
 function load() {
     const header = document.querySelector('.header');
 
-    // Функція для скрол-дій
     function scrollActions() {
         const scrollY = window.scrollY;
 
 
 
-        // Додавання класу на хедер (якщо він є в HTML)
+
         if (header) {
             if (scrollY > 50) {
                 header.classList.add('header-scroll');
@@ -89,7 +84,7 @@ function load() {
         }
     }
 
-    // Функція для кліків
+
     function documentActions(e) {
         const targetElement = e.target;
         if (isMobile.any()) {
@@ -99,10 +94,10 @@ function load() {
         }
     }
 
-    // Викликаємо скрол ОДРАЗУ, щоб перевірити стан при завантаженні
+
     scrollActions();
 
-    // Слухачі подій (всі на одному рівні)
+
     window.addEventListener("scroll", scrollActions);
     document.addEventListener('click', documentActions);
 }
