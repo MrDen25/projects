@@ -13,6 +13,8 @@ testWebp(function (support) {
     }
 });
 const heroSlider = document.querySelector('.hero__swiper');
+const newsSlider = document.querySelector(".news__slider")
+const aboutUsSlider = document.querySelector(".company__slider")
 
 if (heroSlider) {
     const currentEl = document.querySelector('.current-slide');
@@ -55,6 +57,69 @@ if (heroSlider) {
         const progress = (current / total) * 100;
         fillEl.style.width = `${progress}%`;
     }
+}
+
+if (newsSlider) {
+    const swiper = new Swiper(newsSlider, {
+        loop: true,
+        speed: 800,
+
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1.2,
+                spaceBetween: 26
+            },
+
+            541: {
+                slidesPerView: 1.7,
+                spaceBetween: 20
+            },
+
+            769: {
+                slidesPerView: 2.72,
+                spaceBetween: 40
+            },
+
+            1025: {
+                slidesPerView: 3.53,
+                spaceBetween: 48
+            }
+        }
+
+    });
+}
+
+if (aboutUsSlider) {
+    const swiper = new Swiper(aboutUsSlider, {
+        loop: true,
+        speed: 800,
+        slidesPerView: 1.21,
+        spaceBetween: 12,
+
+        // breakpoints: {
+        //     0: {
+        //         slidesPerView: 1.2,
+        //         spaceBetween: 26
+        //     },
+
+        //     541: {
+        //         slidesPerView: 1.7,
+        //         spaceBetween: 20
+        //     },
+
+        //     769: {
+        //         slidesPerView: 2.72,
+        //         spaceBetween: 40
+        //     },
+
+        //     1025: {
+        //         slidesPerView: 3.53,
+        //         spaceBetween: 48
+        //     }
+        // }
+
+    });
 }
 "use strict"
 
