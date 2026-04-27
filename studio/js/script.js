@@ -91,35 +91,41 @@ if (newsSlider) {
 }
 
 if (aboutUsSlider) {
+    const currentEl = document.querySelector('.current-slide');
+    const totalEl = document.querySelector('.total-slides');
+    const fillEl = document.querySelector('.hero__progressbar-fill');
     const swiper = new Swiper(aboutUsSlider, {
         loop: true,
         speed: 800,
         slidesPerView: 1.21,
         spaceBetween: 12,
-
-        // breakpoints: {
-        //     0: {
-        //         slidesPerView: 1.2,
-        //         spaceBetween: 26
-        //     },
-
-        //     541: {
-        //         slidesPerView: 1.7,
-        //         spaceBetween: 20
-        //     },
-
-        //     769: {
-        //         slidesPerView: 2.72,
-        //         spaceBetween: 40
-        //     },
-
-        //     1025: {
-        //         slidesPerView: 3.53,
-        //         spaceBetween: 48
-        //     }
-        // }
+        navigation: {
+            nextEl: ".hero-button-next",
+            prevEl: ".hero-button-prev",
+        },
+        on: {
+            init: function (s) {
+                updateProgress(s);
+            },
+            slideChange: function (s) {
+                updateProgress(s);
+            }
+        }
 
     });
+    function updateProgress(s) {
+        if (!currentEl || !totalEl || !fillEl) return;
+
+        const current = s.realIndex + 1;
+        const total = s.slides.filter(slide => !slide.classList.contains('swiper-slide-duplicate')).length;
+
+        currentEl.textContent = current < 10 ? `0${current}` : current;
+        totalEl.textContent = total < 10 ? `0${total}` : total;
+
+
+        const progress = (current / total) * 100;
+        fillEl.style.width = `${progress}%`;
+    }
 }
 "use strict"
 
@@ -167,4 +173,32 @@ function load() {
     document.addEventListener('click', documentActions);
 }
 
+let modal = document.querySelector(".modal")
+let modalClose = document.querySelector(".modal__close")
 
+
+
+document.addEventListener("click", (e) => {
+    const targetElement = e.target;
+    if (targetElement.classList.contains("header__request") || targetElement.classList.contains("header__request_menu-open")) {
+        modal.classList.add("open")
+        document.documentElement.setAttribute('data-modal-open', "");
+    }
+
+    if (targetElement.classList.contains("modal__close")) {
+        modal.classList.remove("open")
+        document.documentElement.removeAttribute('data-modal-open');
+
+    }
+
+
+})
+
+// document.querySelectorAll("input").forEach(input =>
+//     input.addEventListener("change", () => {
+//         if (input.value !== "") {
+//             input.previousElementSibling.classList.add("has-value")
+//         }
+//         else input.previousElementSibling.classList.remove("has-value")
+//     })
+// )
