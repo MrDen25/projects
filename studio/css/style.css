@@ -1690,7 +1690,6 @@ html:not([data-fls-touch]) .projects .lorem-projects__item:hover {
 
 .footer-news {
   position: relative;
-  aspect-ratio: 1440/654;
 }
 
 .footer-news__picture {
