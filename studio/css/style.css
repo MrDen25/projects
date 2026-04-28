@@ -968,6 +968,7 @@ html:not([data-fls-touch]) .footer .mail-footer-top__lang-link:hover {
 }
 
 .page .hero .proportions__title {
+  font-weight: 700;
   letter-spacing: 0.04em;
   font-size: 48px;
   color: transparent;
@@ -3044,6 +3045,7 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   font-size: 22px;
   line-height: 1.27;
   margin-bottom: 27px;
+  color: #080808;
 }
 
 .modal.open {
@@ -3160,6 +3162,7 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
 }
 
 .modal .bottom-modal .file__label {
+  color: #080808;
   cursor: pointer;
 }
 
@@ -3271,6 +3274,7 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .radio__group:first-child {
@@ -3828,9 +3832,6 @@ body {
   }
 
   .projects .item-projects__container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     left: 0;
     padding-left: 33px;
     padding-bottom: 36px;
@@ -4281,7 +4282,7 @@ body {
 
   .modal__box {
     max-width: 808px;
-    padding: 35px 54px 3px;
+    padding: 35px 54px 33px;
   }
 
   .modal__top {
@@ -4749,17 +4750,17 @@ body {
   .radio__group:nth-child(2),
   .radio__group:nth-child(6) {
     justify-self: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
   }
 
   .radio__group:nth-child(3),
   .radio__group:nth-child(7) {
     justify-self: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: end;
   }
 
   .page__philosophy {
@@ -6084,6 +6085,11 @@ body {
   .modal__box {
     background-color: #080808;
     padding: 0 0 0 0;
+  }
+
+  .modal__close {
+    right: 30px;
+    top: 17px;
   }
 
   .modal__top {

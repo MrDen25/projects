@@ -180,7 +180,7 @@ let modalClose = document.querySelector(".modal__close")
 
 document.addEventListener("click", (e) => {
     const targetElement = e.target;
-    if (targetElement.classList.contains("header__request") || targetElement.classList.contains("header__request_menu-open")) {
+    if (targetElement.classList.contains("send-request")) {
         modal.classList.add("open")
         document.documentElement.setAttribute('data-modal-open', "");
     }
