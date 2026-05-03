@@ -1549,6 +1549,132 @@ html:not([data-fls-touch]) .projects .lorem-projects__item:hover {
   bottom: -76px;
 }
 
+.page .hero__fraction .current-slide,
+.page .hero__fraction .total-slides {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #080808;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: right 0.3s;
+  transition: right 0.3s;
+}
+
+.mask.hide {
+  right: 100%;
+}
+
+.loader {
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: 0.26em;
+  color: #fafafa;
+}
+
+.modal-submit {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #080808;
+  z-index: 10000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  padding: 60px 40px;
+  opacity: 0;
+  visibility: hidden;
+  overflow: auto;
+  margin: auto;
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-submit.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-submit.show .modal-submit__box {
+  scale: 1;
+}
+
+.modal-submit__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-submit__box {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: stretch;
+  padding: 108px 20px;
+  scale: 0;
+  -webkit-transition: scale 0.8s;
+  transition: scale 0.8s;
+}
+
+.modal-submit__title {
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #080808;
+}
+
+.modal-submit__text p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+  color: #3a3e4b;
+  opacity: 0.7;
+  max-width: 448px;
+}
+
+.modal-submit__text {
+  margin-bottom: 40px;
+}
+
+.modal-submit__button {
+  background-color: #3a3e4b;
+  color: #fff;
+}
+
 .page .latest__title-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3003,11 +3129,15 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .modal__box {
+  width: 100%;
   max-width: 1046px;
-  margin: 0 auto;
+  margin: auto;
   background-color: #f2f2f2;
   overflow: auto;
   padding: 56px 123px 56px;
@@ -3068,6 +3198,7 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
 .form__group {
   padding-bottom: 3px;
   border-bottom: 1px solid rgba(214, 214, 214, 0.3);
+  position: relative;
 }
 
 .form__group input::-webkit-input-placeholder {
@@ -3338,6 +3469,55 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   background: #afb0b2;
   border-radius: 100%;
   outline: 1px solid #fff;
+}
+
+.error {
+  color: red;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  position: absolute;
+  bottom: -80%;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.not-found-page {
+  background-color: black;
+}
+
+.not-found .not-found__container {
+  max-width: 650px;
+}
+
+.not-found__title {
+  font-weight: 700;
+  font-size: 36px;
+  color: #fafafa;
+  margin-bottom: 21px;
+}
+
+.not-found__text p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.71;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.not-found__text {
+  margin-bottom: 48px;
+}
+
+.not-found__link {
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
 }
 
 body {
