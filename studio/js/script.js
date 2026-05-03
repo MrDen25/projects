@@ -183,24 +183,32 @@ function load() {
 }
 "use strict";
 
-// Робимо функцію глобальною, щоб вона була доступна в інших файлах
 window.clearForm = function (formElement) {
     if (!formElement) return;
 
-    // Скидаємо значення полів
     formElement.reset();
 
-    // Очищаємо візуальні стани помилок
+    // Очищаємо візуальні стани помилок та кастомні класи
     const inputs = formElement.querySelectorAll("[data-val='true']");
     inputs.forEach(el => {
         el.classList.remove("valid", "invalid");
-
         const errorLabel = document.querySelector("#" + el.dataset.errorLabel);
         if (errorLabel) {
             errorLabel.style.display = "none";
             errorLabel.innerHTML = "";
         }
     });
+
+    // Скидаємо стрілочки селектів, якщо вони були повернуті
+    const selectGroups = formElement.querySelectorAll('.form__group.arrow-right');
+    selectGroups.forEach(group => group.classList.remove('arrow-right-deg'));
+
+    // Очищення тексту файлу (якщо є такий елемент)
+    const fileNameDisplay = document.querySelector(".file-name");
+    if (fileNameDisplay) {
+        fileNameDisplay.textContent = "Attach your file";
+        fileNameDisplay.style.color = "";
+    }
 };
 
 const form = document.getElementById('form');
@@ -226,15 +234,12 @@ if (form) {
             e.preventDefault();
         } else {
             e.preventDefault();
-            // Викликаємо події успіху, які зазвичай лежать у другому файлі
 
-
-            // Очищення виконується в обробнику успіху (див. другий файл)
             const modal = document.querySelector(".modal");
             const modalSubmit = document.querySelector(".modal-submit");
-            if (modalSubmit) modalSubmit.classList.add("show");
-            if (modal) modal.classList.remove("open");
 
+            if (modal) modal.classList.remove("open");
+            if (modalSubmit) modalSubmit.classList.add("show");
 
             window.clearForm(form);
         }
@@ -302,41 +307,51 @@ let modalSubmitButton = document.querySelector(".modal-submit__button");
 let mask = document.querySelector(".mask");
 let loader = document.querySelector(".loader");
 
-// Обробка кліків (Відкриття / Закриття)
 document.addEventListener("click", (e) => {
     const targetElement = e.target;
     const formElement = document.getElementById('form');
 
-    // Відкрити модалку
+    // 1. Відкрити основну модалку
     if (targetElement.classList.contains("send-request")) {
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--sw', `${scrollBarWidth}px`);
+
         modal.classList.add("open");
         document.documentElement.setAttribute('data-modal-open', "");
     }
 
-    // Закрити модалку (через хрестик)
-    if (targetElement.classList.contains("modal__close")) {
+    // 2. Закрити основну модалку (Клік по хрестику АБО по фону поза контентом)
+    if (targetElement.classList.contains("modal__close") || targetElement === modal) {
         modal.classList.remove("open");
         document.documentElement.removeAttribute('data-modal-open');
-
-        // Очищаємо форму при закритті
         if (window.clearForm) window.clearForm(formElement);
+    }
+
+    // 3. Закрити модалку успіху (Клік по фону поза контентом)
+    if (targetElement === modalSubmit) {
+        modalSubmit.classList.remove("show");
+        document.documentElement.removeAttribute('data-modal-open');
     }
 });
 
-// Закриття вікна успішної відправки
-modalSubmitClose.addEventListener("click", () => {
-    document.documentElement.removeAttribute('data-modal-open');
-    modalSubmit.classList.remove("show");
-});
+// Закриття вікна успіху через хрестик
+if (modalSubmitClose) {
+    modalSubmitClose.addEventListener("click", () => {
+        document.documentElement.removeAttribute('data-modal-open');
+        modalSubmit.classList.remove("show");
+    });
+}
 
 // Кнопка "Назад до форми" у вікні успіху
-modalSubmitButton.addEventListener("click", () => {
-    const formElement = document.getElementById('form');
-    if (window.clearForm) window.clearForm(formElement);
+if (modalSubmitButton) {
+    modalSubmitButton.addEventListener("click", () => {
+        const formElement = document.getElementById('form');
+        if (window.clearForm) window.clearForm(formElement);
 
-    modal.classList.add("open");
-    modalSubmit.classList.remove("show");
-});
+        modal.classList.add("open");
+        modalSubmit.classList.remove("show");
+    });
+}
 
 // Логіка прелоадера
 const changeText = (newText, delay) => {
@@ -354,6 +369,21 @@ window.addEventListener("load", async () => {
     setTimeout(() => {
         if (mask) mask.classList.add("hide");
     }, 150);
+});
+
+// Логіка стрілочок селектів
+document.addEventListener('click', (e) => {
+    const target = e.target.closest('.form__group.arrow-right');
+    const allArrows = document.querySelectorAll('.form__group.arrow-right');
+
+    if (target) {
+        target.classList.toggle('arrow-right-deg');
+        allArrows.forEach(el => {
+            if (el !== target) el.classList.remove('arrow-right-deg');
+        });
+    } else {
+        allArrows.forEach(el => el.classList.remove('arrow-right-deg'));
+    }
 });
 "use strict";
 
@@ -382,11 +412,3 @@ document.addEventListener("click", (e) => {
 });
 
 
-// document.querySelectorAll("input").forEach(input =>
-//     input.addEventListener("change", () => {
-//         if (input.value !== "") {
-//             input.previousElementSibling.classList.add("has-value")
-//         }
-//         else input.previousElementSibling.classList.remove("has-value")
-//     })
-// )

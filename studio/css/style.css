@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300%3B400%3B500%3B600%3B700&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
@@ -93,6 +95,18 @@ select {
 
 select::-ms-expand {
   display: none;
+}
+
+select {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 10px 0;
 }
 
 @font-face {
@@ -331,6 +345,10 @@ html:not([data-fls-touch]) .filter__link span:hover::after {
   padding: 23px 0;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
+}
+
+html[data-modal-open] .header {
+  padding-right: 0px;
 }
 
 .header-scroll {
@@ -779,6 +797,10 @@ html:not([data-fls-touch]) .footer .mail-footer-top__lang-link:hover {
   gap: 11px;
 }
 
+.page .hero__nav-btn {
+  cursor: pointer;
+}
+
 .page .hero__fraction {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -944,9 +966,11 @@ html:not([data-fls-touch]) .footer .mail-footer-top__lang-link:hover {
 
 .page .hero .bottom-hero__tel {
   margin-left: 72px;
+  cursor: pointer;
 }
 
 .page .hero .bottom-hero__mail {
+  cursor: pointer;
   margin-left: 39px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3263,6 +3287,12 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   pointer-events: none;
 }
 
+.form__group.arrow-right.arrow-right-deg::after {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .modal__bottom {
   max-width: 800px;
   margin: 0 auto;
@@ -3540,6 +3570,26 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* 1. Зафарбовуємо фон під колір твоїх інпутів (заміни white на свій, якщо треба) */
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  /* 2. Ставимо колір тексту точно такий самий, як у тебе в стилях */
+  -webkit-text-fill-color: #3a3e4b !important;
+  /* 3. Обов'язково фіксуємо шрифт, щоб він не стрибав на системний */
+  font-family: inherit !important;
+  font-size: inherit !important;
+  /* 4. "Заморожуємо" колір фону на 5000 секунд, щоб синій навіть не намагався проявитися */
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
