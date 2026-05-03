@@ -3489,8 +3489,26 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   background-color: black;
 }
 
+.not-found-page main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.not-found-page .name-bottom-footer__first,
+.not-found-page .name-bottom-footer__second {
+  color: #fff;
+}
+
 .not-found .not-found__container {
-  max-width: 650px;
+  max-width: 950px;
+  padding-left: 220px;
 }
 
 .not-found__title {
@@ -4940,6 +4958,10 @@ body {
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: end;
+  }
+
+  .not-found .not-found__container {
+    padding-left: 15px;
   }
 
   .page__philosophy {
