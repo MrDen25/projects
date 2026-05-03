@@ -3485,6 +3485,10 @@ html:not([data-fls-touch]) .contacts .mail-footer-top__lang-link:hover {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.not-found-page header {
+  color: #fff;
+}
+
 .not-found-page {
   background-color: black;
 }
