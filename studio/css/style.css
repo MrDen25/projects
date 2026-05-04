@@ -348,7 +348,7 @@ html:not([data-fls-touch]) .filter__link span:hover::after {
 }
 
 html[data-modal-open] .header {
-  padding-right: 0px;
+  padding-right: var(--scrollbar-width);
 }
 
 .header-scroll {
@@ -3606,10 +3606,6 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-html {
-  scrollbar-gutter: stable;
-}
-
 body {
   font-family: "Montserrat", sans-serif;
   color: #080808;
@@ -3617,10 +3613,12 @@ body {
 
 [data-menu-open] body {
   overflow: hidden;
+  padding-right: var(--scrollbar-width);
 }
 
 [data-modal-open] body {
   overflow: hidden;
+  padding-right: var(--scrollbar-width);
 }
 
 .wrapper {

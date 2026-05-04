@@ -299,6 +299,9 @@ let validators = {
 };
 "use strict";
 
+const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
+
 let modal = document.querySelector(".modal");
 let modalSubmit = document.querySelector(".modal-submit");
 let modalSubmitClose = document.querySelector(".modal-submit__close");
