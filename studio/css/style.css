@@ -2981,7 +2981,20 @@ html:not([data-fls-touch]) .page_one-project .lorem-projects__item:hover {
 
 .contacts main {
   background: url("../img/footer/background-footer.webp") no-repeat center/cover;
-  padding-top: 189px;
+  padding-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .contacts .footer-contact-us {
@@ -2992,6 +3005,7 @@ html:not([data-fls-touch]) .page_one-project .lorem-projects__item:hover {
 }
 
 .contacts .footer__top {
+  width: 100%;
   max-width: 1077px;
   margin: 0 auto;
 }
@@ -3690,6 +3704,10 @@ body {
 .footer {
   padding-top: 125px;
   padding-bottom: 35px;
+}
+
+.bottom-footer {
+  margin-top: 0;
 }
 
 @media (width <= 43.75em) and (min-width: 43.75em) {
@@ -5677,6 +5695,10 @@ body {
 
   .page_one-project .hero-project__title br {
     display: none;
+  }
+
+  .about-us .bottom-footer__container {
+    margin-top: 142px;
   }
 }
 

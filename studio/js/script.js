@@ -390,10 +390,20 @@ document.addEventListener('click', (e) => {
 document.addEventListener("change", (e) => {
     if (e.target.id === "fileInput") {
         const fileNameDisplay = document.querySelector(".file-name");
-        if (e.target.files.length > 0) {
+        const file = e.target.files[0];
+        const maxSize = 10 * 1024 * 1024; // 10 МБ у байтах
 
-            fileNameDisplay.textContent = "Файл додано: " + e.target.files[0].name;
-            fileNameDisplay.style.color = "green";
+        if (file) {
+            if (file.size > maxSize) {
+                // Якщо файл завеликий
+                fileNameDisplay.textContent = "Помилка: файл більше 10 МБ";
+                fileNameDisplay.style.color = "red";
+                e.target.value = ""; // Очищаємо інпут
+            } else {
+                // Якщо все добре
+                fileNameDisplay.textContent = "Файл додано: " + file.name;
+                fileNameDisplay.style.color = "green";
+            }
         }
     }
 });
@@ -405,6 +415,7 @@ document.addEventListener("click", (e) => {
 
         if (fileInput) fileInput.value = "";
         if (fileNameDisplay) {
+            // Повертаємо початковий текст
             fileNameDisplay.textContent = "Attach your file";
             fileNameDisplay.style.color = "";
         }
